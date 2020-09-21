@@ -30,13 +30,14 @@ public class Project extends BaseEntity {
     @NotNull
     @ManyToOne
     private Hospital hospital;
-//Relacja zwrotna nie jest potrzbna lepiej robic zapytanie do bazy danych
-/*    @NotNull
+
+
+    @NotNull
     @ManyToOne
     private User manager;
 
     @ManyToOne
-    private User engineer;*/
+    private User engineer;
 
     @NotNull
     @ManyToOne

@@ -1,8 +1,15 @@
 package pl.coderslab.medical_devices_query_system.baseEntity;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@EqualsAndHashCode(of = "id")
 @MappedSuperclass
 public class BaseEntity {
     @Id
@@ -13,10 +20,13 @@ public class BaseEntity {
     private LocalDateTime createdOn;
     @Column(name = "updated_on")
     private LocalDateTime updatedOn;
+    @Column(nullable = false)
+    private boolean active = false;
 
     @PrePersist
-    public void setCreatedOn(){
+    public void setCreatedOnAndActive(){
         createdOn = LocalDateTime.now();
+        active = true;
     }
 
     @PreUpdate

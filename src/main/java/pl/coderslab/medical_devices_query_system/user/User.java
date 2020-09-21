@@ -3,6 +3,7 @@ package pl.coderslab.medical_devices_query_system.user;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 
 import javax.persistence.*;
@@ -23,13 +24,12 @@ public class User extends BaseEntity {
     @NotBlank
     private String lastName;
 
-    public String getFullName(){
+    public String getFullName() {
         return fisrtName + lastName;
     }
 
-    @CollectionTable(name = COLUMN_ROLE)
-    @ElementCollection
-    private Set<String> role;
+    @Column(name = COLUMN_ROLE)
+    private String role;
 
     private UserDetails userDetails;
 

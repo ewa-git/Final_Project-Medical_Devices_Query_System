@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html class="html">
@@ -21,7 +22,7 @@
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/registration.js"></script>
-    <!--    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>-->
+    <!--   -->
 </head>
 
 <body>
@@ -32,38 +33,39 @@
 </div>
 
 <section class="center" id="registerForm">
-    <form>
+    <form:form method="post" modelAttribute="user" action="/register">
         <div class="field hide" id="firstName">
             <div class="control">
-                <input class="input" type="text" placeholder="Imię">
+                <form:input path="fisrtName" class="input" name="firstName" placeholder="Imię"/>
             </div>
         </div>
         <div class="field hide" id="lastName">
             <div class="control">
-                <input class="input" type="text" placeholder="Nazwisko">
+                <form:input path="lastName" class="input" placeholder="Nazwisko"/>
             </div>
         </div>
         <div class="field hide" id="email">
             <div class="control">
-                <input class="input" type="text" placeholder="Email">
+                <form:input path="userDetails.email" class="input" placeholder="Email"/>
             </div>
         </div>
         <div class="field hide" id="password">
             <div class="control">
-                <input class="input" type="text" placeholder="Hasło">
+                <form:input path="userDetails.password" class="input" type="text" placeholder="Hasło"/>
             </div>
         </div>
-        <div class="field hide" id="passwordRepeat">
+  <%--      <div class="field hide" id="passwordRepeat">
             <div class="control">
                 <input class="input" type="text" placeholder="Powtórz hasło" >
             </div>
-        </div>
+        </div>--%>
         <p class="control hide" id="submit">
-            <button class="button is-success">
+            <form:button class="button is-success">
                 Załóż konto
-            </button>
+            </form:button>
         </p>
-    </form><br>
+        <sec:csrfInput/>
+    </form:form><br>
 </section>
 
 </body></html>
