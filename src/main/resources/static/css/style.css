@@ -1,0 +1,57 @@
+.hide {
+	display: none;
+}
+
+.html {
+	background-image: radial-gradient(#6CD7FD, navy);
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	overflow: hidden;
+	background-position: center;
+
+}
+
+.center {
+
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+}
+
+.header {
+	background-color: navy
+}
+
+.fontHeader {
+	color: white
+}
+
+.table {
+	background-color: beige
+}
+
+.nav {
+	width: 20%;
+	float: left;
+	height: 100%
+}
+
+.page {
+	width: 75%;
+	float: left;
+	margin: 30px;
+	margin-left: 50px;
+
+}
+
+.list {
+	background-image: url("/images/gplaypattern.png");
+
+}
+
+body{
+	height: 100%;
+	overflow: scroll;
+}
