@@ -51,7 +51,7 @@
         </div>
         <div class="field hide" id="password">
             <div class="control">
-                <form:input path="userDetails.password" class="input" type="text" placeholder="Hasło"/>
+                <form:password path="userDetails.password" class="input" placeholder="Hasło"/>
             </div>
         </div>
   <%--      <div class="field hide" id="passwordRepeat">
