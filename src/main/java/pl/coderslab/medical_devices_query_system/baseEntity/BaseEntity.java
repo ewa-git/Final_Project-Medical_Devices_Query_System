@@ -11,7 +11,7 @@ public class BaseEntity {
 
     @Column(name = "created_on",nullable = false, updatable = false)
     private LocalDateTime createdOn;
-    @Column(name = "created_on")
+    @Column(name = "updated_on")
     private LocalDateTime updatedOn;
 
     @PrePersist

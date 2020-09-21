@@ -1,3 +1,4 @@
+/*
 package pl.coderslab.medical_devices_query_system;
 
 import org.springframework.context.annotation.Configuration;
@@ -19,3 +20,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login");
     }
 }
+*/
