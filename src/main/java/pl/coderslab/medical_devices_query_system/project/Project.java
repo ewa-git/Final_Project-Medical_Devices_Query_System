@@ -1,54 +1,48 @@
 package pl.coderslab.medical_devices_query_system.project;
 
-import jdk.vm.ci.meta.Local;
+
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 import pl.coderslab.medical_devices_query_system.hospital.Hospital;
+import pl.coderslab.medical_devices_query_system.system.System;
+import pl.coderslab.medical_devices_query_system.user.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @Entity
-public class Project {
+@Table(name = Project.TABLE_NAME)
+public class Project extends BaseEntity {
+    public static final String TABLE_NAME = "projects";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @NotBlank
-    private String roomName;
-
-    @NotBlank
-    private String height;
-
-    @NotBlank
-    private String roomLength;
-
-    @NotBlank
-    private String roomWidth;
-
-    private String comments;
+    private ProjectDetails projectDetails;
 
     private String status;
 
-    private LocalDateTime created;
-
-
     @PrePersist
-    public void setCreatedAndStatus(){
-        created = LocalDateTime.now();
+    public void setStatus(){
         status = "requested";
     }
 
+    @NotNull
     @ManyToOne
     private Hospital hospital;
 
+    @NotNull
+    @ManyToOne
+    private User manager;
 
+    @ManyToOne
+    private User engineer;
 
+    @NotNull
+    @ManyToOne
+    private System system;
 
+    //relacja zwrotna juz nie jest potrzebna, lepiej robic zapytanie
 
 
 

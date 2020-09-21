@@ -2,34 +2,23 @@ package pl.coderslab.medical_devices_query_system.hospital;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.pl.NIP;
-import org.hibernate.validator.constraints.pl.REGON;
+import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @Entity
-public class Hospital {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Table(name = Hospital.TABLE_NAME)
+public class Hospital extends BaseEntity {
+    public static final String TABLE_NAME = "hospitals";
 
     @NotBlank
-    private String city;
+    private String name;
 
-    @NotBlank
-    private String street;
-
-    @NIP
-    private String nip;
-
-    @REGON
-    private String regon;
+    private HospitalDetails hospitalDetails;
 
 }

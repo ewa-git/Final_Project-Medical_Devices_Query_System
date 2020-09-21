@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
     <title>Homepage</title>
@@ -14,5 +15,6 @@
 <body>
 <%--<h1>Witaj!</h1>--%>
 <h1><spring:message code="homepage.welcome"/></h1>
+
 </body>
 </html>

@@ -1,18 +1,15 @@
 package pl.coderslab.medical_devices_query_system.system;
 
+import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
-public class System {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Table(name = System.TABLE_NAME)
+public class System extends BaseEntity {
+    public static final String TABLE_NAME = "systems";
 
     @NotBlank
     private String type;
@@ -20,8 +17,8 @@ public class System {
     @NotBlank
     private String name;
 
-    @NotNull
-    private Double price;
+//    @NotNull
+//    private Double price;
 
 
 }

@@ -39,7 +39,7 @@ Lista funkcjonalności:
 
 To-do list:
 * Automatyczna generacja kosztorysu
-* Dodawanie plików na stronę
+* Dodawanie plików na stron
 
 ## Status
 Project is: _in progress_
