@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.user;
+package pl.coderslab.medical_devices_query_system;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.user;
+package pl.coderslab.medical_devices_query_system.user.model;
 
 
 import lombok.Getter;
@@ -6,9 +6,7 @@ import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 @Getter
@@ -26,7 +24,7 @@ public class User extends BaseEntity {
     @NotBlank
     private String role;
 
-    private UserDetails userDetails;
+    private UserData userData;
 
     public String getFullName() {
         return fisrtName + lastName;

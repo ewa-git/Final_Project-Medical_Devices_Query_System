@@ -9,10 +9,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.coderslab.medical_devices_query_system.user.CustomSuccessHandler;
-import pl.coderslab.medical_devices_query_system.user.Role;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pl.coderslab.medical_devices_query_system.user.model.Role;
 
 import javax.sql.DataSource;
 
@@ -48,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override

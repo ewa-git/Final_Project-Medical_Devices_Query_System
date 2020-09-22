@@ -6,7 +6,7 @@ import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 import pl.coderslab.medical_devices_query_system.hospital.Hospital;
 import pl.coderslab.medical_devices_query_system.system.System;
-import pl.coderslab.medical_devices_query_system.user.User;
+import pl.coderslab.medical_devices_query_system.user.model.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

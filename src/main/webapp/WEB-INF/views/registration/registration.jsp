@@ -46,12 +46,12 @@
         </div>
         <div class="field hide" id="email">
             <div class="control">
-                <form:input path="userDetails.email" class="input" placeholder="Email"/>
+                <form:input path="userData.email" class="input" placeholder="Email"/>
             </div>
         </div>
         <div class="field hide" id="password">
             <div class="control">
-                <form:password path="userDetails.password" class="input" placeholder="Hasło"/>
+                <form:password path="userData.password" class="input" placeholder="Hasło"/>
             </div>
         </div>
         <%--      <div class="field hide" id="passwordRepeat">

@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.user;
+package pl.coderslab.medical_devices_query_system.user.controllers;
 
 
 import lombok.RequiredArgsConstructor;
@@ -7,6 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.medical_devices_query_system.user.model.Role;
+import pl.coderslab.medical_devices_query_system.user.model.User;
+import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
 
 @Controller
 @RequestMapping("/register")
@@ -27,8 +30,9 @@ public class RegistrationController {
 
     @PostMapping
     public String registerUser(@ModelAttribute User user){
+
         user.setRole(Role.MANAGER.toString());
-        user.getUserDetails().setPassword(passwordEncoder.encode(user.getUserDetails().getPassword()));
+        user.getUserData().setPassword(passwordEncoder.encode(user.getUserData().getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);
         return "redirect:/login";

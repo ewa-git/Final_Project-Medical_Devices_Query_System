@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.user;
+package pl.coderslab.medical_devices_query_system.user.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.PrePersist;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -17,7 +16,7 @@ import javax.validation.constraints.Size;
 @Setter
 @Embeddable
 @RequiredArgsConstructor()
-public class UserDetails {
+public class UserData {
 
     @NotBlank
     @Size(min = 5)
@@ -29,7 +28,7 @@ public class UserDetails {
     private String email;
 
 
-    private String phone;
+//    private String phone;
 
 
     //Relacja dwukierunkowa z klasa project nie jest potrzebna lepiej robic zapytanie

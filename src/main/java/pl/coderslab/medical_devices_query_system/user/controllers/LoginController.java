@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.user;
+package pl.coderslab.medical_devices_query_system.user.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
