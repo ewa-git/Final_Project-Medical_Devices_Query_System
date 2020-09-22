@@ -27,11 +27,10 @@ public class RegistrationController {
 
     @PostMapping
     public String registerUser(@ModelAttribute User user){
-        log.debug("Użytkownik do rejestracji:", user);
         user.setRole(Role.MANAGER.toString());
         user.getUserDetails().setPassword(passwordEncoder.encode(user.getUserDetails().getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);
-        return "redirect:/home";
+        return "redirect:/login";
     }
 }

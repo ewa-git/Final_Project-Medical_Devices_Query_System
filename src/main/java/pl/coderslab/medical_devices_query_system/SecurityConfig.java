@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.coderslab.medical_devices_query_system.user.CustomSuccessHandler;
+import pl.coderslab.medical_devices_query_system.user.Role;
 
 import javax.sql.DataSource;
 
@@ -20,28 +22,28 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
+    private final CustomSuccessHandler successHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-      /*  http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/manager/**").hasRole("MANAGER")
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/engineer/**").hasAnyRole("ADMIN", "ENGINEER")
-                .and().formLogin()
-                .loginPage("/login");*/
+
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/login").anonymous()
+                .antMatchers("/manager/**").hasRole(Role.MANAGER.toString())
+                .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
+                .antMatchers("/engineer/**").hasRole(Role.ENGINEER.toString())
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")
+                .successHandler(successHandler)
                 .and()
                 .logout()
-                .logoutSuccessUrl("/logout.jsp").permitAll();
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/logout");
 
     }
 
@@ -56,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT email, password, active FROM users WHERE email = ?")
-                .authoritiesByUsernameQuery("SELECT email, user_role FROM users WHERE email = ?");
+                .authoritiesByUsernameQuery("SELECT email, role FROM users WHERE email = ?");
     }
+
+
 }

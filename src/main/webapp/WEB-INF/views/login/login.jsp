@@ -30,12 +30,19 @@
         <img src="/images/logo.png">
     </div>
 </div>
+<c:if test="${param['error'] != null}">
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        Dane logowania są błądne. Spróbuj jeszcze raz!
+    </div>
+</c:if>
 
 <section class="center" id="loginForm">
-    <form>
+
+    <form method="post" action="/login">
         <div class="field">
             <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="Email">
+                <input class="input" type="email" placeholder="Podaj email" name="email">
                 <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -46,7 +53,7 @@
         </div>
         <div class="field">
             <p class="control has-icons-left">
-                <input class="input" type="password" placeholder="Password">
+                <input class="input" type="password" placeholder="Podaj hasło" name="password">
                 <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -59,6 +66,7 @@
                 </button>
             </p>
         </div>
+        <sec:csrfInput/>
     </form>
     <br>
     <div class="is-link">

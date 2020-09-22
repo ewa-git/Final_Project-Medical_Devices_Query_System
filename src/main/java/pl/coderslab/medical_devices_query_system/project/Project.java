@@ -31,7 +31,6 @@ public class Project extends BaseEntity {
     @ManyToOne
     private Hospital hospital;
 
-
     @NotNull
     @ManyToOne
     private User manager;

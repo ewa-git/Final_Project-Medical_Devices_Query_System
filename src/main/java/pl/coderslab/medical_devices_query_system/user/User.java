@@ -6,7 +6,9 @@ import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Getter
@@ -22,7 +24,6 @@ public class User extends BaseEntity {
     private String lastName;
 
     @NotBlank
-    @Column(name = "user_role")
     private String role;
 
     private UserDetails userDetails;

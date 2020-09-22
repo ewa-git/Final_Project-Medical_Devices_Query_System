@@ -14,18 +14,15 @@ public class ProjectDetails {
 
 
     @NotBlank
-    @Column(name = "room_name")
     private String roomName;
 
     @NotBlank
     private String height;
 
     @NotBlank
-    @Column(name = "room_length")
     private String roomLength;
 
     @NotBlank
-    @Column(name = "room_width")
     private String roomWidth;
 
     @CollectionTable
