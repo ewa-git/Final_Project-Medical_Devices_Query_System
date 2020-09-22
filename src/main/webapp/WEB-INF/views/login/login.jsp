@@ -59,7 +59,8 @@
                 </button>
             </p>
         </div>
-    </form><br>
+    </form>
+    <br>
     <div class="is-link">
         <a href="/register">Nie masz jeszcze konta? Zarejestruj się!</a>
     </div>

@@ -11,7 +11,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-<html class="html">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -54,11 +54,11 @@
                 <form:password path="userDetails.password" class="input" placeholder="Hasło"/>
             </div>
         </div>
-  <%--      <div class="field hide" id="passwordRepeat">
-            <div class="control">
-                <input class="input" type="text" placeholder="Powtórz hasło" >
-            </div>
-        </div>--%>
+        <%--      <div class="field hide" id="passwordRepeat">
+                  <div class="control">
+                      <input class="input" type="text" placeholder="Powtórz hasło" >
+                  </div>
+              </div>--%>
         <p class="control hide" id="submit">
             <form:button class="button is-success">
                 Załóż konto
@@ -68,4 +68,5 @@
     </form:form><br>
 </section>
 
-</body></html>
+</body>
+</html>

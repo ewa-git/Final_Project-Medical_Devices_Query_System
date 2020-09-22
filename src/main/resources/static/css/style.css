@@ -50,8 +50,20 @@
 	background-image: url("/images/gplaypattern.png");
 
 }
-
-body{
-	height: 100%;
+/*body{
+	height: 100vh;
 	overflow: scroll;
+}*/
+
+/*
+.pageHeight{
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
 }
+
+.content{
+	width: 100%;
+	min-height: 100%;
+	overflow: scroll;
+}*/
