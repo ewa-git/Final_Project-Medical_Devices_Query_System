@@ -11,27 +11,24 @@ import java.util.List;
 @Setter
 @Embeddable
 public class ProjectDetails {
-    protected final String COLUMN_ROOM_NAME = "room_name";
-    private final String COLUMN_ROOM_LENGTH = "room_length";
-    private final String COLUMN_ROOM_WIDTH = "room_width";
-    private final String COLUMN_COMMENTS = "room_width";
+
 
     @NotBlank
-    @Column(name = COLUMN_ROOM_NAME)
+    @Column(name = "room_name")
     private String roomName;
 
     @NotBlank
     private String height;
 
     @NotBlank
-    @Column(name = COLUMN_ROOM_LENGTH)
+    @Column(name = "room_length")
     private String roomLength;
 
     @NotBlank
-    @Column(name = COLUMN_ROOM_WIDTH)
+    @Column(name = "room_width")
     private String roomWidth;
 
-    @CollectionTable(name = COLUMN_COMMENTS)
+    @CollectionTable
     @ElementCollection
     private List<String> comments;
 }

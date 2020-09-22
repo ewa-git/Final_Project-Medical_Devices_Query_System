@@ -3,7 +3,6 @@ package pl.coderslab.medical_devices_query_system.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +28,7 @@ public class RegistrationController {
     @PostMapping
     public String registerUser(@ModelAttribute User user){
         log.debug("Użytkownik do rejestracji:", user);
+        user.setRole(Role.MANAGER.toString());
         user.getUserDetails().setPassword(passwordEncoder.encode(user.getUserDetails().getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);
