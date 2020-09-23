@@ -3,9 +3,8 @@ package pl.coderslab.medical_devices_query_system.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
+import pl.coderslab.medical_devices_query_system.validation.RepeatPassword;
 import pl.coderslab.medical_devices_query_system.validation.UniqueEmail;
 
 import javax.persistence.*;
@@ -17,6 +16,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Table(name = User.TABLE_NAME)
+@RepeatPassword
 public class User extends BaseEntity {
     public static final String TABLE_NAME = "users";
 
@@ -36,6 +36,11 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     @Size(min = 5)
     private String password;
+
+    @NotBlank
+    @Transient
+    private String repeatPassword;
+
 
     @Email
     @UniqueEmail

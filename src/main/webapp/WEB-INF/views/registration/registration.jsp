@@ -59,11 +59,12 @@
                 <p><form:errors path="password" class="help is-danger"/></p>
             </div>
         </div>
-        <%--      <div class="field hide" id="passwordRepeat">
+              <div class="field hide" id="passwordRepeat">
                   <div class="control">
-                      <input class="input" type="text" placeholder="Powtórz hasło" >
+                      <form:password path="repeatPassword" class="input" placeholder="Powtórz hasło" />
+                      <p><form:errors path="repeatPassword" class="help is-danger"/></p>
                   </div>
-              </div>--%>
+              </div>
         <p class="control hide" id="submit">
             <form:button class="button is-success">
                 Załóż konto
