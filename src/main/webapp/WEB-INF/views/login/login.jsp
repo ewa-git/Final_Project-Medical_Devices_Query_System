@@ -42,7 +42,7 @@
     <form method="post" action="/login">
         <div class="field">
             <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="Podaj email" name="email">
+                <input class="input" type="email" placeholder="Podaj email" name="username">
                 <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
