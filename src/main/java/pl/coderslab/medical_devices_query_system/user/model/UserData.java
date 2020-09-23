@@ -1,3 +1,4 @@
+/*
 package pl.coderslab.medical_devices_query_system.user.model;
 
 import lombok.Getter;
@@ -33,8 +34,11 @@ public class UserData {
 
     //Relacja dwukierunkowa z klasa project nie jest potrzebna lepiej robic zapytanie
     // do bazy danych dla danego managera/inzyniera wyciagnac liste projektow
+*/
 /*    @OneToMany
-    private List<Project> listOfProjects = new ArrayList<>();*/
+    private List<Project> listOfProjects = new ArrayList<>();*//*
+
 
 }
+*/
 

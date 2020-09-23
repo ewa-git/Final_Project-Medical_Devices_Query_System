@@ -21,10 +21,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String redirectUrl = null;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_ENGINEER")) {
+            if (grantedAuthority.getAuthority().equals("ENGINEER")) {
                 redirectUrl = "/engineer/dashboard";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (grantedAuthority.getAuthority().equals("ADMIN")) {
                 redirectUrl = "/admin/dashboard";
                 break;
             } else if (grantedAuthority.getAuthority().equals("MANAGER")) {
