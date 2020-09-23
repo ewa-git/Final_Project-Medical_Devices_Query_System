@@ -14,18 +14,22 @@ public class ProjectDetails {
 
 
     @NotBlank
+    @Column(nullable = false)
     private String roomName;
 
     @NotBlank
+    @Column(nullable = false)
     private String height;
 
     @NotBlank
+    @Column(nullable = false)
     private String roomLength;
 
     @NotBlank
+    @Column(nullable = false)
     private String roomWidth;
 
-    @CollectionTable
+/*    @CollectionTable
     @ElementCollection
-    private List<String> comments;
+    private List<String> comments;*/
 }

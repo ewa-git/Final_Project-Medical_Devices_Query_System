@@ -1,5 +1,6 @@
-package pl.coderslab.medical_devices_query_system;
+package pl.coderslab.medical_devices_query_system.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 
-@Component
+@Configuration
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -36,6 +37,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             throw new IllegalStateException();
         }
         new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
+
     }
 }
 

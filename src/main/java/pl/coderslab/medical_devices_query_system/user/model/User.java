@@ -20,34 +20,39 @@ public class User extends BaseEntity {
     public static final String TABLE_NAME = "users";
 
     @NotBlank
+    @Column(nullable = false)
     private String fisrtName;
 
     @NotBlank
+    @Column(nullable = false)
     private String lastName;
 
-    @NotBlank
+
+    @Column(nullable = false)
     private String role;
 
     @NotBlank
+    @Column(nullable = false)
     @Size(min = 5)
     private String password;
 
     @Email
     @NotBlank
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-/*
-    public User(String email, String password, GrantedAuthority authority) {
-        this.email = email;
-        this.password = password;
-        authority = new SimpleGrantedAuthority(role);
-    }
-*/
 
     public String getFullName() {
         return fisrtName + lastName;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "fisrtName='" + fisrtName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

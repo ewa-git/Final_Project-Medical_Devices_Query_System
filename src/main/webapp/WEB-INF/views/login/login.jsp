@@ -31,9 +31,11 @@
     </div>
 </div>
 <c:if test="${param['error'] != null}">
+    <div class="window">
     <div class="notification is-danger">
         <button class="delete"></button>
         Dane logowania są błądne. Spróbuj jeszcze raz!
+    </div>
     </div>
 </c:if>
 
@@ -66,6 +68,7 @@
                 </button>
             </p>
         </div>
+<%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
         <sec:csrfInput/>
     </form>
     <br>

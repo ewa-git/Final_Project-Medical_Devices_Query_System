@@ -67,3 +67,10 @@
 	min-height: 100%;
 	overflow: scroll;
 }*/
+
+.window{
+	width: 50%;
+	position: center;
+	margin-left: 25%;
+}
+

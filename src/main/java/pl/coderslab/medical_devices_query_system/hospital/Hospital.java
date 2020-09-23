@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.Table;
@@ -17,6 +18,7 @@ public class Hospital extends BaseEntity {
     public static final String TABLE_NAME = "hospitals";
 
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
     private HospitalDetails hospitalDetails;

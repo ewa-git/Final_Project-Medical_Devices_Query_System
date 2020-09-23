@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.pl.NIP;
 import org.hibernate.validator.constraints.pl.REGON;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 
@@ -14,9 +15,11 @@ import javax.validation.constraints.NotBlank;
 public class HospitalDetails {
 
     @NotBlank
+    @Column(nullable = false)
     private String city;
 
     @NotBlank
+    @Column(nullable = false)
     private String street;
 
     @NIP

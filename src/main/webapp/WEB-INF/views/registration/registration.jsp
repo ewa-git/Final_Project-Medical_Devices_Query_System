@@ -34,24 +34,29 @@
 
 <section class="center" id="registerForm">
     <form:form method="post" modelAttribute="user" action="/register">
+        <p><form:errors path="*" class="help is-danger"/></p>
         <div class="field hide" id="firstName">
             <div class="control">
                 <form:input path="fisrtName" class="input" name="firstName" placeholder="Imię"/>
+                <p><form:errors path="fisrtName" class="help is-danger"/></p>
             </div>
         </div>
         <div class="field hide" id="lastName">
             <div class="control">
                 <form:input path="lastName" class="input" placeholder="Nazwisko"/>
+                <p><form:errors path="lastName" class="help is-danger"/></p>
             </div>
         </div>
         <div class="field hide" id="email">
             <div class="control">
                 <form:input path="email" class="input" placeholder="Email"/>
+                <p><form:errors path="email" class="help is-danger"/></p>
             </div>
         </div>
         <div class="field hide" id="password">
             <div class="control">
                 <form:password path="password" class="input" placeholder="Hasło"/>
+                <p><form:errors path="password" class="help is-danger"/></p>
             </div>
         </div>
         <%--      <div class="field hide" id="passwordRepeat">

@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system;
+package pl.coderslab.medical_devices_query_system.config;
 
 
 import lombok.RequiredArgsConstructor;
@@ -25,10 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/").permitAll()
+//                .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/manager/**").hasRole(Role.MANAGER.toString())
+                .antMatchers("/manager/**").permitAll()
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
                 .antMatchers("/engineer/**").hasRole(Role.ENGINEER.toString())
                 .anyRequest().authenticated()
@@ -41,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutSuccessUrl("/logout");
-
     }
 
     @Bean
