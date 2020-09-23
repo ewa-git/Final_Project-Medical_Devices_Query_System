@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
+import pl.coderslab.medical_devices_query_system.validation.UniqueEmail;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -37,6 +38,7 @@ public class User extends BaseEntity {
     private String password;
 
     @Email
+    @UniqueEmail
     @NotBlank
     @Column(nullable = false, unique = true)
     private String email;
