@@ -1,6 +1,5 @@
 package pl.coderslab.medical_devices_query_system.home;
 
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/")
-    public String hello(){
+    public String hello() {
         return "home";
     }
 }

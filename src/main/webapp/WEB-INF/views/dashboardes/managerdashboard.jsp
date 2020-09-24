@@ -13,5 +13,12 @@
 </head>
 <body>
 <h1>działa</h1>
+${userLogin}
+
+<form action="/logout" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+    <sec:csrfInput/>
+</form>
 </body>
 </html>

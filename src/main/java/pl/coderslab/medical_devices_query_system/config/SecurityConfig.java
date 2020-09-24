@@ -1,6 +1,5 @@
 package pl.coderslab.medical_devices_query_system.config;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -9,9 +8,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.coderslab.medical_devices_query_system.user.model.Role;
-
+import pl.coderslab.medical_devices_query_system.customization.handlers.CustomSuccessHandler;
 import javax.sql.DataSource;
+
 
 @RequiredArgsConstructor
 @Configuration
@@ -25,12 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-//                .antMatchers("/").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/manager/**").permitAll()
-                .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
-                .antMatchers("/engineer/**").hasRole(Role.ENGINEER.toString())
+                .antMatchers("/manager/**").hasRole("MANAGER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/engineer/**").hasRole("ENGINEER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -40,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutSuccessUrl("/logout");
+                .logoutSuccessUrl("/login");
     }
 
     @Bean

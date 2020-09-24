@@ -1,16 +1,15 @@
 package pl.coderslab.medical_devices_query_system.user.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
-import pl.coderslab.medical_devices_query_system.validation.RepeatPassword;
-import pl.coderslab.medical_devices_query_system.validation.UniqueEmail;
-
+import pl.coderslab.medical_devices_query_system.customization.validation.RepeatPassword;
+import pl.coderslab.medical_devices_query_system.customization.validation.UniqueEmail;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Getter

@@ -3,10 +3,8 @@ package pl.coderslab.medical_devices_query_system.hospital;
 import lombok.Getter;
 import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 

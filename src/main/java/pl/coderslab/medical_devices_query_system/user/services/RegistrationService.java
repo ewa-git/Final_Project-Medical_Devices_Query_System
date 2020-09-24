@@ -20,8 +20,8 @@ public class RegistrationService {
     private final PasswordEncoder passwordEncoder;
 
 
-    public void registerManager(User user){
-        user.setRole(Role.MANAGER.toString());
+    public void registerManager(User user) {
+        user.setRole(Role.ROLE_MANAGER.toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);

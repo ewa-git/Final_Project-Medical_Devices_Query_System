@@ -16,7 +16,7 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_on",nullable = false, updatable = false)
+    @Column(name = "created_on", nullable = false, updatable = false)
     private LocalDateTime createdOn;
     @Column(name = "updated_on")
     private LocalDateTime updatedOn;
@@ -24,13 +24,13 @@ public class BaseEntity {
     private boolean active = false;
 
     @PrePersist
-    public void setCreatedOnAndActive(){
+    public void setCreatedOnAndActive() {
         createdOn = LocalDateTime.now();
         active = true;
     }
 
     @PreUpdate
-    public void setUpdatedOn(){
+    public void setUpdatedOn() {
         updatedOn = LocalDateTime.now();
     }
 }

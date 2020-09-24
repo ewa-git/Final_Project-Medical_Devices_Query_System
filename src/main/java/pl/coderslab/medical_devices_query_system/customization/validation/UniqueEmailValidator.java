@@ -1,9 +1,7 @@
-package pl.coderslab.medical_devices_query_system.validation;
+package pl.coderslab.medical_devices_query_system.customization.validation;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
 
@@ -18,7 +16,7 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
     private final UserRepository userRepository;
 
     @Override
-    public void initialize(UniqueEmail annotation){
+    public void initialize(UniqueEmail annotation) {
 
     }
 

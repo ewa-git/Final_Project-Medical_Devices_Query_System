@@ -12,5 +12,10 @@
 </head>
 <body>
 <h1>Wylogowano</h1>
+<%--<form action="/logout" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    &lt;%&ndash;<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>&ndash;%&gt;
+    <sec:csrfInput/>
+</form>--%>
 </body>
 </html>

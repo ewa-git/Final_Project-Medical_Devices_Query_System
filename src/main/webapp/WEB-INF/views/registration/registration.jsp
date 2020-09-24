@@ -16,13 +16,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Zarejestruj się!</title>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/registration.js"></script>
-    <!--   -->
 </head>
 
 <body>
@@ -59,12 +58,12 @@
                 <p><form:errors path="password" class="help is-danger"/></p>
             </div>
         </div>
-              <div class="field hide" id="passwordRepeat">
-                  <div class="control">
-                      <form:password path="repeatPassword" class="input" placeholder="Powtórz hasło" />
-                      <p><form:errors path="repeatPassword" class="help is-danger"/></p>
-                  </div>
-              </div>
+        <div class="field hide" id="passwordRepeat">
+            <div class="control">
+                <form:password path="repeatPassword" class="input" placeholder="Powtórz hasło"/>
+                <p><form:errors path="repeatPassword" class="help is-danger"/></p>
+            </div>
+        </div>
         <p class="control hide" id="submit">
             <form:button class="button is-success">
                 Załóż konto

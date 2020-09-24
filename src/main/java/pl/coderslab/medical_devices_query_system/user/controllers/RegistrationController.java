@@ -21,14 +21,14 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @GetMapping
-    public String showRegistrationPage(Model model){
+    public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
         return "registration/registration";
     }
 
     @PostMapping
-    public String registerUser(@Valid User user, BindingResult result){
-        if(result.hasErrors()){
+    public String registerUser(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
             return "registration/registration";
         }
         registrationService.registerManager(user);

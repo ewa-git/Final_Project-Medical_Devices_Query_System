@@ -1,11 +1,10 @@
-package pl.coderslab.medical_devices_query_system.config;
+package pl.coderslab.medical_devices_query_system.customization.handlers;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +21,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String redirectUrl = null;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ENGINEER")) {
+            if (grantedAuthority.getAuthority().equals("ROLE_ENGINEER")) {
                 redirectUrl = "/engineer/dashboard";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ADMIN")) {
+            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 redirectUrl = "/admin/dashboard";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("MANAGER")) {
+            } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
                 redirectUrl = "/manager/dashboard";
                 break;
             }

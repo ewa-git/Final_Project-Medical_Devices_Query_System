@@ -1,5 +1,5 @@
 package pl.coderslab.medical_devices_query_system.user.model;
 
 public enum Role {
-    ADMIN, ENGINEER, MANAGER;
+    ROLE_ADMIN, ROLE_ENGINEER, ROLE_MANAGER;
 }

@@ -1,4 +1,4 @@
-package pl.coderslab.medical_devices_query_system.validation;
+package pl.coderslab.medical_devices_query_system.customization.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

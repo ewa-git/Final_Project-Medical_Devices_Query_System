@@ -1,6 +1,5 @@
 package pl.coderslab.medical_devices_query_system.project;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
@@ -10,6 +9,7 @@ import pl.coderslab.medical_devices_query_system.user.model.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 
 @Getter
 @Setter
@@ -23,7 +23,7 @@ public class Project extends BaseEntity {
     private String status;
 
     @PrePersist
-    public void setStatus(){
+    public void setStatus() {
         status = "requested";
     }
 
