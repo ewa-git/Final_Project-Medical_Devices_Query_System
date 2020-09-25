@@ -21,7 +21,7 @@
 }
 
 .header {
-	background-color: navy
+	background-color: gainsboro
 }
 
 .fontHeader {
@@ -35,7 +35,9 @@
 .nav {
 	width: 20%;
 	float: left;
-	height: 100%
+	min-height: 100vh;
+	background-color: gainsboro;
+	padding: 20px;
 }
 
 .page {
@@ -74,3 +76,22 @@
 	margin-left: 25%;
 }
 
+
+* {
+	margin: 0px 0px;
+	padding: 0px 0px;
+}
+html, body {
+	height: 100%;
+	/*text-align:center;*/
+}
+#container{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin-bottom:-29px; /* - height of footer */
+}
+#footer, #push {
+	clear:both;
+	height:29px;
+}
