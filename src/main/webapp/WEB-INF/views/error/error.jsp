@@ -22,7 +22,14 @@
         <div class="notification is-danger">
             ${errorMessage}
         </div>
+        <div class="level-right">
+            <div class="level-item">
+                <input action="action" class="button is-info" type="button" value="Powrót" onclick="history.go(-1);"/>
+            </div>
+        </div>
     </div>
+
 </section>
+
 </body>
 </html>

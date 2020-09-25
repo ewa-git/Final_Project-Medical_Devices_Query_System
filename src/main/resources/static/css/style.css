@@ -95,3 +95,23 @@ html, body {
 	clear:both;
 	height:29px;
 }
+
+
+.popup-outside {
+	display: none;
+	background-color: rgba(200, 200, 200, 0.8);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	position: absolute;
+	left: 0;
+	z-index: 9999;
+}
+
+.popup-inside {
+	margin: 50px;
+	padding: 20px;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
