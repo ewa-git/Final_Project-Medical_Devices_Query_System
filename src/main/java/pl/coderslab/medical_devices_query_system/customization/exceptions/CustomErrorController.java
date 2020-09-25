@@ -22,7 +22,6 @@ public class CustomErrorController implements ErrorController {
             model.addAttribute("errorMessage", "Nie masz uprawnień by wejść na tą stronę");
         } else if ("404".equals(statusCode)) {
             model.addAttribute("errorMessage", "Strona o podanym adresie nie istnieje");
-            return "error/error";
         }
         return "error/error";
     }

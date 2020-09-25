@@ -45,7 +45,10 @@
                                         <div class="level-right">
                                             <div class="buttons">
                                                 <button id="close" class="button is-success">Anuluj</button>
-                                                <a id="delete" href="/hospital/remove/${hospital.id}" class="button is-danger">Usuń</a>
+                                                <form method="post" action="/hospital/remove">
+                                                    <button id="delete" name="id"  value="${hospital.id}" class="button is-danger">Usuń</button>
+                                                    <sec:csrfInput/>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

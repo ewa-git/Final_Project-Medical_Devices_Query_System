@@ -6,6 +6,7 @@ import pl.coderslab.medical_devices_query_system.baseEntity.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -19,6 +20,7 @@ public class Hospital extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
+    @Valid
     private HospitalDetails hospitalDetails;
 
 }

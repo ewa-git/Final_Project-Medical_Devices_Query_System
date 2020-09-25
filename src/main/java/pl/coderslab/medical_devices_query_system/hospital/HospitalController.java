@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.medical_devices_query_system.customization.exceptions.ElementNotFoundException;
+import pl.coderslab.medical_devices_query_system.customization.exceptions.IdsAreNotTheSameException;
 import pl.coderslab.medical_devices_query_system.user.model.User;
 import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
 
@@ -22,6 +24,7 @@ public class HospitalController {
 
     private final HospitalRepository hospitalRepository;
     private final UserRepository userRepository;
+    private final HospitalService hospitalService;
 
 
     @ModelAttribute("user")
@@ -45,18 +48,17 @@ public class HospitalController {
     }
 
     @GetMapping("/list")
-    public String showHospitalList(Principal principal, Model model){
+    public String showHospitalList(Principal principal, Model model) {
         User user = userRepository.findUserByEmail(principal.getName());
         model.addAttribute("hospitalList", hospitalRepository.findAllByActiveAndManagerId(user.getId()));
         return "hospital/list";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormHospital(@PathVariable long id, Model model){
+    public String showEditFormHospital(@PathVariable long id, Model model) {
         Optional<Hospital> hospital = hospitalRepository.findHospitalById(id);
-        if(!hospital.isPresent()){
-            model.addAttribute("errorMessage", "Nie odnaleziono takiego szpitala");
-            return "error/error";
+        if (!hospital.isPresent()) {
+            throw new ElementNotFoundException("Nie odnaleziono szpitala o id " + id);
         }
         model.addAttribute("hospital", hospital.get());
         return "hospital/addHospital";
@@ -64,16 +66,27 @@ public class HospitalController {
 
     @PostMapping("/edit/{id}")
     public String editHospital(@PathVariable long id,
-                               Model model,
                                @Valid Hospital hospital,
-                               BindingResult result){
-        if(hospital.getId() != id){
-            model.addAttribute("errorMessage", "ID szpitala się nie zgadza");
+                               BindingResult result) {
+        if (hospital.getId() != id) {
+            throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
         }
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "hospital/addHospital";
         }
-        hospitalRepository.save(hospital);
+        hospitalService.editHospital(hospital);
         return "redirect:/hospital/list";
     }
+
+    @PostMapping("/remove")
+    public String removeHospital(@RequestParam long id) {
+        Optional<Hospital> hospital = hospitalRepository.findHospitalById(id);
+        if (!hospital.isPresent()) {
+            throw new ElementNotFoundException("Nie odnaleziono szpitala o id " + id);
+        }
+        hospitalService.deleteHospital(hospital.get());
+        return "redirect:/hospital/list";
+    }
+
+
 }

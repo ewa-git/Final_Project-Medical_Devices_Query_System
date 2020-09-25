@@ -9,7 +9,9 @@ import pl.coderslab.medical_devices_query_system.user.model.User;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.executable.ValidateOnExecution;
 
 @Getter
 @Setter
@@ -20,14 +22,17 @@ public class HospitalDetails {
     @Column(nullable = false)
     private String city;
 
+
     @NotBlank
     @Column(nullable = false)
     private String street;
 
-    @NIP
+
+//    @NIP
     private String nip;
 
-    @REGON
+
+//    @REGON
     private String regon;
 
     @OneToOne
