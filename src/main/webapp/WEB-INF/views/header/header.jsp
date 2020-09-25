@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <!DOCTYPE html>
 <html class="list">
@@ -31,7 +31,7 @@
         </div>
         <div class="hero-body navbar-end">
             <div class="container has-image-right">
-                Jesteś zalogowany jako : <strong>${userLogin}</strong>
+                Jesteś zalogowany jako : <strong>${user.fullName}</strong>
             </div>
         </div>
         <div class="hero-foot ">

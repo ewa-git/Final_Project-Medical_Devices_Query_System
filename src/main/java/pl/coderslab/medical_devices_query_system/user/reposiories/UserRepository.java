@@ -6,4 +6,5 @@ import pl.coderslab.medical_devices_query_system.user.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String emailToCheck);
+    User findUserByEmail(String email);
 }

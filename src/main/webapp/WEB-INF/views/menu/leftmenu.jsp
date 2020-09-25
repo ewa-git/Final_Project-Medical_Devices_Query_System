@@ -14,7 +14,7 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a>Strona główna</a></li>
+                <li><a href="/manager/dashboard">Strona główna</a></li>
             </ul>
             <ul class="menu-list">
                 <li><a>Edycja danych</a></li>
@@ -25,8 +25,8 @@
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a>Dodaj szpital</a></li>
-                    <li><a>Lista szpitali</a></li>
+                    <li><a href="/hospital/add">Dodaj szpital</a></li>
+                    <li><a href="/hospital/list">Lista szpitali</a></li>
                 </ul>
             </ul>
             <p class="menu-label">
@@ -40,5 +40,6 @@
                 </ul>
             </ul>
         </aside>
+    </div>
     </div>
 
