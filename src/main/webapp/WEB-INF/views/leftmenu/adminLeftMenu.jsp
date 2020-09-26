@@ -1,11 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: ewa
-  Date: 25.09.2020
-  Time: 07:53
+  Date: 26.09.2020
+  Time: 18:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <div>
     <div class="nav">
         <aside class="menu">
@@ -21,25 +22,24 @@
             </ul>
 
             <p class="menu-label">
-                Szpitale
+                Pracownicy
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a href="/hospital/add">Dodaj szpital</a></li>
-                    <li><a href="/hospital/list">Lista szpitali</a></li>
+                    <li><a href="/hospital/add">Dodaj pracownika</a></li>
+                    <li><a href="/hospital/list">Lista pracowników</a></li>
                 </ul>
             </ul>
             <p class="menu-label">
-                Projekty
+                Systemy
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a>Zamów nowy</a></li>
-                    <li><a>W trakcie realizacji</a></li>
-                    <li><a>Ukończone</a></li>
+                    <li><a>Dodaj system</a></li>
+                    <li><a>Lista systemów aktywnych</a></li>
+                    <li><a>Lista systemów nieaktywnych</a></li>
                 </ul>
             </ul>
         </aside>
     </div>
-    </div>
-
+</div>

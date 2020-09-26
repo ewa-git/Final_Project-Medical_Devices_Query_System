@@ -9,11 +9,11 @@ import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository
 
 import java.security.Principal;
 
-
 @Controller
+@RequestMapping("admin")
 @RequiredArgsConstructor
-@RequestMapping("/manager")
-public class ManagerDashboardController {
+public class AdminDashboardController {
+
     private final UserRepository userRepository;
 
     @ModelAttribute("user")
@@ -22,8 +22,7 @@ public class ManagerDashboardController {
     }
 
     @RequestMapping("/dashboard")
-    public String showManagerDashboard() {
-
-        return "managerDashboard";
+    public String showAdminDashboard(){
+        return "dashboardes/adminDashboard";
     }
 }

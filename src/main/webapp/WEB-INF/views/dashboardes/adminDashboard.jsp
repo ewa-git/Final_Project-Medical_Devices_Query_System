@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="/WEB-INF/views/header/header.jsp"%>
-<%@include file="/WEB-INF/views/menu/leftmenu.jsp"%>
+<%@include file="/WEB-INF/views/header/adminHeader.jsp"%>
+<%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp"%>
 <%--<h1>działa</h1>
 ${userLogin}
 
