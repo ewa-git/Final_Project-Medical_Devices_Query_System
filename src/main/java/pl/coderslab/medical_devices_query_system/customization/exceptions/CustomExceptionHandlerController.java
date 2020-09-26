@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
+
 @ControllerAdvice
 @Slf4j
 public class CustomExceptionHandlerController {
@@ -20,6 +21,13 @@ public class CustomExceptionHandlerController {
     @ExceptionHandler(IdsAreNotTheSameException.class)
     public String idsAreNotTheSameException(Exception e, Model model){
         log.error("Exception: Given id's are not the same");
+        model.addAttribute("errorMessage", e.getMessage());
+        return "error/error";
+    }
+
+    @ExceptionHandler(UserAlreadyExists.class)
+    public String userAlreadyExists(Exception e, Model model){
+        log.error("Exception: User already existis in database");
         model.addAttribute("errorMessage", e.getMessage());
         return "error/error";
     }

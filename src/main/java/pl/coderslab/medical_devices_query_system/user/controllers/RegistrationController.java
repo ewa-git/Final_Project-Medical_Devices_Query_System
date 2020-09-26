@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.medical_devices_query_system.user.model.User;
-import pl.coderslab.medical_devices_query_system.user.services.RegistrationService;
+import pl.coderslab.medical_devices_query_system.user.services.UserService;
 
 import javax.validation.Valid;
 
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class RegistrationController {
 
-    private final RegistrationService registrationService;
+    private final UserService userService;
 
     @GetMapping
     public String showRegistrationPage(Model model) {
@@ -31,7 +31,7 @@ public class RegistrationController {
         if (result.hasErrors()) {
             return "registration/registration";
         }
-        registrationService.registerManager(user);
+        userService.registerManager(user);
         return "redirect:/login";
     }
 }
