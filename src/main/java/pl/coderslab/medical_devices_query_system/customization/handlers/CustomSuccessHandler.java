@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import pl.coderslab.medical_devices_query_system.user.model.Role;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +22,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String redirectUrl = null;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_ENGINEER")) {
+            if (grantedAuthority.getAuthority().equals(Role.ROLE_ENGINEER.toString())) {
                 redirectUrl = "/engineer/dashboard";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (grantedAuthority.getAuthority().equals(Role.ROLE_ADMIN.toString())) {
                 redirectUrl = "/admin/dashboard";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
+            } else if (grantedAuthority.getAuthority().equals(Role.ROLE_MANAGER.toString())) {
                 redirectUrl = "/manager/dashboard";
                 break;
             }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.medical_devices_query_system.user.model.User;
-import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
+import pl.coderslab.medical_devices_query_system.user.services.UserService;
 
 import java.security.Principal;
 
@@ -14,16 +14,16 @@ import java.security.Principal;
 @RequiredArgsConstructor
 @RequestMapping("/manager")
 public class ManagerDashboardController {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @ModelAttribute("user")
     public User showUser(Principal principal) {
-        return userRepository.findUserByEmail(principal.getName());
+        return userService.findUserByEmail(principal.getName());
     }
 
     @RequestMapping("/dashboard")
     public String showManagerDashboard() {
 
-        return "managerDashboard";
+        return "dashboardes/managerDashboard";
     }
 }

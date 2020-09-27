@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
+import pl.coderslab.medical_devices_query_system.user.services.UserService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -13,7 +14,7 @@ import javax.validation.ConstraintValidatorContext;
 @Slf4j
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public void initialize(UniqueEmail annotation) {
@@ -23,6 +24,6 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
     @Override
     public boolean isValid(String emailToCheck, ConstraintValidatorContext constraintValidatorContext) {
         log.info("Sprawdzenie czy użytkownik o emailu istnieje");
-        return !userRepository.existsByEmail(emailToCheck);
+        return !userService.existByEmail(emailToCheck);
     }
 }

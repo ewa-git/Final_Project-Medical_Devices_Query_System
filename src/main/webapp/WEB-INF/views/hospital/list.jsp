@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="/WEB-INF/views/header/managerHeader.jsp" %>
-<%@include file="/WEB-INF/views/menu/leftmenu.jsp" %>
+<%@include file="/WEB-INF/views/leftmenu/managerLeftMenu.jsp" %>
 <div class="page">
     <section class="table">
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
@@ -33,8 +33,8 @@
                     <td>
                         <div class="buttons"><a href="/hospital/edit/${hospital.id}"
                                                 class="button is-warning">Edytuj</a>
-                            <a href="" class="popup button is-danger" data-windowId="#window1">Usuń</a>
-                            <div id="window1" class="popup-outside">
+                            <a href="" class="popup button is-danger" data-windowId="#window${hospital.id}">Usuń</a>
+                            <div id="window${hospital.id}" class="popup-outside">
                                 <div class="popup-inside">
                                     <div class="notification is-link is-light popup-inside">
                                         <br>

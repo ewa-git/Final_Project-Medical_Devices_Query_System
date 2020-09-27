@@ -42,9 +42,9 @@
                 <div class="navbar-end">
                 <div class="level-right">
 
-                    <p class="level-item"><a>Aktywne systemy</a></p>
-                    <p class="level-item"><a>Nieaktywne systemy</a></p>
-                    <p class="level-item"><a class="button is-success">Dodaj system</a></p>
+                    <p class="level-item"><a href="/system/active/list">Aktywne systemy</a></p>
+                    <p class="level-item"><a href="/system/inactive/list">Nieaktywne systemy</a></p>
+                    <p class="level-item"><a href="/system/add" class="button is-success">Dodaj system</a></p>
 
                     <p class="level-item">
                     <form action="/logout" method="post">

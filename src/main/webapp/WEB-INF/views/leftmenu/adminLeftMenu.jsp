@@ -26,8 +26,8 @@
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a href="/hospital/add">Dodaj pracownika</a></li>
-                    <li><a href="/hospital/list">Lista pracowników</a></li>
+                    <li><a href="/admin/engineer/add">Dodaj pracownika</a></li>
+                    <li><a href="/admin/engineer/list">Lista pracowników</a></li>
                 </ul>
             </ul>
             <p class="menu-label">
@@ -35,9 +35,18 @@
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a>Dodaj system</a></li>
-                    <li><a>Lista systemów aktywnych</a></li>
-                    <li><a>Lista systemów nieaktywnych</a></li>
+                    <li><a href="/system/add">Dodaj system</a></li>
+                    <li><a href="/system/active/list">Lista systemów aktywnych</a></li>
+                    <li><a href="/system/inactive/list">Lista systemów nieaktywnych</a></li>
+                </ul>
+            </ul>
+            <p class="menu-label">
+                Projekty
+            </p>
+            <ul class="menu-list">
+                <ul>
+                    <li><a href="/admin/add/system">Projekty do przypisania</a></li>
+                    <li><a href="/admin/list/system/active">Lista projektów w realizacji</a></li>
                 </ul>
             </ul>
         </aside>

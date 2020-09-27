@@ -20,6 +20,13 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    public boolean existByEmail(String emailToCheck){
+        return userRepository.existsByEmail(emailToCheck);
+    }
+
+    public User findUserByEmail(String email){
+        return userRepository.findUserByEmail(email);
+    }
 
     public void registerManager(User user) {
         user.setRole(Role.ROLE_MANAGER.toString());
@@ -36,7 +43,7 @@ public class UserService {
         admin.setFisrtName("Admin");
         admin.setLastName("Admin");
         admin.setPassword(passwordEncoder.encode("admin"));
-        admin.setRole("ROLE_ADMIN");
+        admin.setRole(Role.ROLE_ADMIN.toString());
         admin.setEmail("admin@gmail.com");
         userRepository.save(admin);
 
