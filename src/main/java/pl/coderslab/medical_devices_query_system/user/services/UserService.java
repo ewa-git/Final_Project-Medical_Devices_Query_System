@@ -46,7 +46,15 @@ public class UserService {
         admin.setRole(Role.ROLE_ADMIN.toString());
         admin.setEmail("admin@gmail.com");
         userRepository.save(admin);
+        log.debug("Użytkownik zarejestrowany:", admin);
 
+    }
+
+    public void createEngineer(User user){
+        user.setRole(Role.ROLE_ENGINEER.toString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        log.debug("Użytkownik zarejestrowany:", user);
     }
 
 }
