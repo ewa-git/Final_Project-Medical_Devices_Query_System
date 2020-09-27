@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="field is-horizontal" id="password">
+ <%--       <div class="field is-horizontal" id="password">
             <div class="field-label is-normal">
                 <label class="label">Hasło</label>
             </div>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <p class="control" id="submit">
         <div class="level-right">
             <form:button class="button is-success">

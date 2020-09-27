@@ -26,7 +26,7 @@ public class HospitalController {
     private final HospitalService hospitalService;
 
 
-    @ModelAttribute("user")
+    @ModelAttribute("loggedUser")
     public User showUser(Principal principal) {
         return userService.findUserByEmail(principal.getName());
     }

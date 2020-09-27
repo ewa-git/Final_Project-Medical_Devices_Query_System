@@ -16,7 +16,7 @@ import java.security.Principal;
 public class ManagerDashboardController {
     private final UserService userService;
 
-    @ModelAttribute("user")
+    @ModelAttribute("loggedUser")
     public User showUser(Principal principal) {
         return userService.findUserByEmail(principal.getName());
     }

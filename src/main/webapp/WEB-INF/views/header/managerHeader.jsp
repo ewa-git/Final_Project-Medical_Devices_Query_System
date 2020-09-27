@@ -31,7 +31,7 @@
         </div>
         <div class="hero-body navbar-end">
             <div class="container has-image-right">
-                Jesteś zalogowany jako : <strong>${user.fullName}</strong>
+                Jesteś zalogowany jako : <strong>${loggedUser.fullName}</strong>
             </div>
         </div>
         <div class="hero-foot ">

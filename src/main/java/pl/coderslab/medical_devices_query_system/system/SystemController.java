@@ -25,7 +25,7 @@ public class SystemController {
     private final UserService userService;
     private final SystemService systemService;
 
-    @ModelAttribute("user")
+    @ModelAttribute("loggedUser")
     public User showUser(Principal principal) {
         return userService.findUserByEmail(principal.getName());
     }

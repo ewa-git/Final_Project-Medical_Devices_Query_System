@@ -28,6 +28,6 @@ public class System extends BaseEntity {
 //    @NotNull
 //    private Double price;
 
-//    private String description;
+    private String description;
 
 }

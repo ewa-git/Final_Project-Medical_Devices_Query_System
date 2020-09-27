@@ -29,7 +29,7 @@
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
                             <p class="title">Opis</p>
-                            <p class="subtitle">Opis systemu</p>
+                            <p class="subtitle">${system.description}</p>
                             </article>
                     </div>
                 </div>

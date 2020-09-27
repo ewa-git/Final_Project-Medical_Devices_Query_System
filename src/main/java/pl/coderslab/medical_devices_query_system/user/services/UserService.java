@@ -10,6 +10,8 @@ import pl.coderslab.medical_devices_query_system.user.model.User;
 import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -28,6 +30,18 @@ public class UserService {
         return userRepository.findUserByEmail(email);
     }
 
+    public boolean existsByRole(String role){
+        return userRepository.existsByRole(role);
+    }
+
+    public List<User> findUserByActiveAndRole(String role){
+        return userRepository.findUserByActiveAndRole(role);
+    }
+
+    public Optional<User> findUserById(long id){
+        return userRepository.findById(id);
+    }
+
     public void registerManager(User user) {
         user.setRole(Role.ROLE_MANAGER.toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -36,7 +50,7 @@ public class UserService {
     }
 
     public void createAdmin(){
-        if(userRepository.existsByRole("ROLE_ADMIN")){
+        if(existsByRole("ROLE_ADMIN")){
             throw new UserAlreadyExists("Użytkownik admin już istnieje");
         }
         User admin = new User();
@@ -55,6 +69,18 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);
+    }
+
+    public void updateUser(User user){
+        user.setActive(true);
+        userRepository.save(user);
+        log.debug("Użytkownik zaktualizowany:", user);
+    }
+
+    public void deleteUser(User user){
+        user.setActive(false);
+        userRepository.save(user);
+        log.debug("Usunięto użytkownika:", user);
     }
 
 }
