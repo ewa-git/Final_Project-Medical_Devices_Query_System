@@ -27,7 +27,7 @@ public class ProjectController {
 
     private final UserService userService;
     private final SystemService systemService;
-    private final  ProjectService projectService;
+    private final ProjectService projectService;
     private final HospitalService hospitalService;
 
 
@@ -37,37 +37,42 @@ public class ProjectController {
     }
 
     @ModelAttribute("systems")
-    public List<System> systemList(){
+    public List<System> systemList() {
         return systemService.findAllByActive();
     }
 
     @ModelAttribute("hospitals")
-    public List<Hospital> hospitalList(Principal principal){
+    public List<Hospital> hospitalList(Principal principal) {
         User manager = userService.findUserByEmail(principal.getName());
         return hospitalService.findAllByActiveAndManagerId(manager.getId());
     }
 
     @GetMapping("/add")
-    public String showAddFormProject(Model model){
+    public String showAddFormProject(Model model) {
         model.addAttribute("project", new Project());
         return "project/addProject";
     }
 
     @PostMapping("/add")
-    public String addFormProject(@Valid Project project, BindingResult result){
-       if(result.hasErrors()){
-           return "project/addProject";
-       }
-       projectService.save(project);
+    public String addFormProject(@Valid Project project, BindingResult result) {
+        if (result.hasErrors()) {
+            return "project/addProject";
+        }
+        projectService.save(project);
         return "redirect:/project/list";
     }
 
-     @RequestMapping("/list")
-    public String showProjectListActive(Model model){
+    @RequestMapping("/list")
+    public String showProjectListActive(Principal principal, Model model) {
+        User manager = userService.findUserByEmail(principal.getName());
+
+        List<Project> projects = projectService.findAllByActiveAndManagerId(manager.getId());
+        if (projects.isEmpty()) {
+            model.addAttribute("message", "Nie dodano jeszcze projektów");
+        }
+        model.addAttribute("projects", projects);
         return "project/listProject";
-     }
-
-
+    }
 
 
 }

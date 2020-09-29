@@ -1,7 +1,13 @@
 package pl.coderslab.medical_devices_query_system.project;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
+
+    @Query("SELECT p FROM Project p WHERE p.active = true AND p.manager.id = ?1")
+    List<Project> findAllByActiveAndManagerId(long id);
 }
