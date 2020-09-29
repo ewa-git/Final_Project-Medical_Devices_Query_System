@@ -8,6 +8,7 @@ import pl.coderslab.medical_devices_query_system.system.System;
 import pl.coderslab.medical_devices_query_system.user.model.User;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 public class Project extends BaseEntity {
     public static final String TABLE_NAME = "projects";
 
+    @Valid
     private ProjectDetails projectDetails;
 
     private String status;
