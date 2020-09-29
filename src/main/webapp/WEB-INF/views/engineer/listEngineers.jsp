@@ -33,10 +33,10 @@
                 <td>${engineer.email}</td>
                 <td>
                     <div class="buttons">
-                        <a href="/admin/engineer/edit/${engineer.id}"
-                           class="button is-warning">Edytuj</a>
-                        <a href="/admin/engineer/details/${engineer.id}"
-                           class="button is-info">Szczegóły</a>
+<%--                        <a href="/admin/engineer/edit/${engineer.id}"
+                           class="button is-warning">Edytuj</a>--%>
+                      <%--  <a href="/admin/engineer/details/${engineer.id}"
+                           class="button is-info">Szczegóły</a>--%>
                         <a href="" class="popup button is-danger" data-windowId="#window${engineer.id}">Usuń</a>
                         <div id="window${engineer.id}" class="popup-outside">
                             <div class="popup-inside">

@@ -35,7 +35,7 @@
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a>Zamów nowy</a></li>
+                    <li><a href="/project/add">Zamów nowy</a></li>
                     <li><a>W trakcie realizacji</a></li>
                     <li><a>Ukończone</a></li>
                 </ul>

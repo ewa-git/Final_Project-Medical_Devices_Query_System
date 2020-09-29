@@ -52,7 +52,7 @@ public class AdminEngineerController {
         return "engineer/listEngineers";
     }
 
-    @GetMapping("/edit/{id}")
+/*    @GetMapping("/edit/{id}")
     public String showEditFormEngineer(@PathVariable long id, Model model) {
         Optional<User> engineer = userService.findUserById(id);
         if (!engineer.isPresent()) {
@@ -74,7 +74,7 @@ public class AdminEngineerController {
         }
         userService.updateUser(user);
         return "redirect:/admin/engineer/list";
-    }
+    }*/
 
     @PostMapping("/remove")
     public String removeEngineer(@RequestParam long id){
@@ -85,4 +85,14 @@ public class AdminEngineerController {
         userService.deleteUser(engineer.get());
         return "redirect:/admin/engineer/list";
     }
+
+/*    @RequestMapping("/details/{id}")
+    public String engineerDetails(@PathVariable long id, Model model){
+        Optional<User> engineer = userService.findUserById(id);
+        if (!engineer.isPresent()) {
+            throw new ElementNotFoundException("Nie odnaleziono użytkownika o id" + id);
+        }
+        model.addAttribute("user", engineer.get());
+        return "engineer/detailsEngineer";
+    }*/
 }
