@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.medical_devices_query_system.customization.exceptions.ElementNotFoundException;
 import pl.coderslab.medical_devices_query_system.hospital.Hospital;
 import pl.coderslab.medical_devices_query_system.hospital.HospitalService;
 import pl.coderslab.medical_devices_query_system.system.System;
@@ -19,6 +17,7 @@ import pl.coderslab.medical_devices_query_system.user.services.UserService;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -74,5 +73,23 @@ public class ProjectController {
         return "project/listProject";
     }
 
+    @GetMapping("/edit/{id}")
+    public String showEditFormProject(@PathVariable long id, Model model){
+        Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
+        if(!project.isPresent()){
+            throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
+        }
+
+        model.addAttribute("project", project.get());
+        return "project/addProject";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editProject(@PathVariable long id,
+                              @Valid Project project,
+                              BindingResult result){
+        return "";
+
+    }
 
 }

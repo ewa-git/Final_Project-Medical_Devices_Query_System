@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -19,5 +20,9 @@ public class ProjectService {
 
     public List<Project> findAllByActiveAndManagerId(long id){
         return projectRepository.findAllByActiveAndManagerId(id);
+    }
+
+    public Optional<Project> findProjectByActiveAndProjectId(long projectId){
+        return projectRepository.findProjectByActiveAndProjectId(projectId);
     }
 }
