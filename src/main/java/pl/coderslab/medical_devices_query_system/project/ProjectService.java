@@ -25,4 +25,21 @@ public class ProjectService {
     public Optional<Project> findProjectByActiveAndProjectId(long projectId){
         return projectRepository.findProjectByActiveAndProjectId(projectId);
     }
+
+    public void updateProject(Project modelProject, Project dbProject){
+        dbProject.getProjectDetails().setRoomName(modelProject.getProjectDetails().getRoomName());
+        dbProject.getProjectDetails().setHeight(modelProject.getProjectDetails().getHeight());
+        dbProject.getProjectDetails().setRoomLength(modelProject.getProjectDetails().getRoomLength());
+        dbProject.getProjectDetails().setRoomWidth(modelProject.getProjectDetails().getRoomWidth());
+        dbProject.setSystem(modelProject.getSystem());
+        dbProject.setHospital(modelProject.getHospital());
+        dbProject.setEngineer(modelProject.getEngineer());
+        projectRepository.save(dbProject);
+    }
+
+    public void deleteProject(Project project){
+        project.setStatus("canceled");
+        project.setActive(false);
+        projectRepository.save(project);
+    }
 }

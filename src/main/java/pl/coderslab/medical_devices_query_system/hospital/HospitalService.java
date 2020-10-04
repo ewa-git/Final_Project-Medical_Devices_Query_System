@@ -25,13 +25,19 @@ public class HospitalService {
         return hospitalRepository.findHospitalById(id);
     }
 
-    public void editHospital(Hospital hospital){
-        hospital.setActive(true);
-        hospitalRepository.save(hospital);
+    public void editHospital(Hospital modelHospital, Hospital dbHospital){
+        dbHospital.setName(modelHospital.getName());
+        dbHospital.getHospitalDetails().setCity(modelHospital.getHospitalDetails().getCity());
+        dbHospital.getHospitalDetails().setNip(modelHospital.getHospitalDetails().getNip());
+        dbHospital.getHospitalDetails().setRegon(modelHospital.getHospitalDetails().getRegon());
+
+        hospitalRepository.save(dbHospital);
     }
 
     public void deleteHospital(Hospital hospital){
         hospital.setActive(false);
         hospitalRepository.save(hospital);
     }
+
+
 }

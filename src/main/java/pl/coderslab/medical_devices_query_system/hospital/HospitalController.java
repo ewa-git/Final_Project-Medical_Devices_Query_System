@@ -65,15 +65,20 @@ public class HospitalController {
 
     @PostMapping("/edit/{id}")
     public String editHospital(@PathVariable long id,
-                               @Valid Hospital hospital,
+                               @Valid Hospital hospitalFromModel,
                                BindingResult result) {
-        if (hospital.getId() != id) {
-            throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
-        }
         if (result.hasErrors()) {
             return "hospital/addHospital";
         }
-        hospitalService.editHospital(hospital);
+        Optional<Hospital> hospitalFromDbOptional = hospitalService.findHospitalById(id);
+        if (!hospitalFromDbOptional.isPresent()) {
+            throw new ElementNotFoundException("Nie odnaleziono szpitala o id " + id);
+        }
+        Hospital hospitalFromDb = hospitalFromDbOptional.get();
+        if (hospitalFromModel.getId() != hospitalFromDb.getId()) {
+            throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
+        }
+             hospitalService.editHospital(hospitalFromModel, hospitalFromDb);
         return "redirect:/hospital/list";
     }
 
@@ -86,6 +91,8 @@ public class HospitalController {
         hospitalService.deleteHospital(hospital.get());
         return "redirect:/hospital/list";
     }
+
+
 
 
 }

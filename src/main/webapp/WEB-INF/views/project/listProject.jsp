@@ -37,13 +37,13 @@
                             <td>-</td>
                         </c:if>
                         <c:if test="${project.engineer != null}">
-                        <td>${project.engineer.fullName}</td>
+                            <td>${project.engineer.fullName}</td>
                         </c:if>
                         <td>
                             <div class="buttons"><a href="/project/edit/${project.id}"
                                                     class="button is-warning">Edytuj</a>
-                                <div class="buttons"><a href="/project/details/${project.id}"
-                                                        class="button is-info">Szczegóły</a>
+                                <a href="/project/details/${project.id}"
+                                   class="button is-info">Szczegóły</a>
                                 <a href="" class="popup button is-danger" data-windowId="#window${project.id}">Usuń</a>
                                 <div id="window${project.id}" class="popup-outside">
                                     <div class="popup-inside">

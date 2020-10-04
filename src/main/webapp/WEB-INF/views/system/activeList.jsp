@@ -13,6 +13,10 @@
 <%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp" %>
 
 <div class="page">
+<c:if test="${message != null}">
+    <h2 class="subtitle">${message}</h2>
+</c:if>
+<c:if test="${message == null}">
     <section class="table">
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <tr>
@@ -59,9 +63,10 @@
             </tr>
             </c:forEach>
 
-</div>
-</table>
-</section>
+    </div>
+    </table>
+    </section>
+</c:if>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>

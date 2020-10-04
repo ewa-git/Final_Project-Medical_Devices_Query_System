@@ -31,13 +31,20 @@ public class SystemService {
         return systemRepository.findById(id);
     }
 
-    public void updateSystem(System system){
-        system.setActive(true);
-        systemRepository.save(system);
+    public void updateSystem(System modelSystem, System dbSystem){
+        dbSystem.setName(modelSystem.getName());
+        dbSystem.setType(modelSystem.getType());
+        dbSystem.setDescription(modelSystem.getDescription());
+        systemRepository.save(dbSystem);
     }
 
     public void deactivateSystem(System system){
         system.setActive(false);
+        systemRepository.save(system);
+    }
+
+    public void activateSystem(System system){
+        system.setActive(true);
         systemRepository.save(system);
     }
 }

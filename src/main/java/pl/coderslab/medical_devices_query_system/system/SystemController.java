@@ -56,6 +56,10 @@ public class SystemController {
 
     @RequestMapping("/active/list")
     public String showActiveSystemList(Model model){
+        List<System> activeSystemList = systemService.findAllByActive();
+        if (activeSystemList.isEmpty()){
+            model.addAttribute("message", "Nie dodano jeszcze systemów");
+        }
         model.addAttribute("activeSystems", systemService.findAllByActive());
         return "system/activeList";
     }
@@ -72,15 +76,21 @@ public class SystemController {
 
     @PostMapping("/edit/{id}")
     public String editSystem(@PathVariable long id,
-                             @Valid System system,
+                             @Valid System systemFromModel,
                              BindingResult result){
-        if(id!=system.getId()){
-            throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
-        }
         if(result.hasErrors()){
             return "system/addSystem";
         }
-        systemService.updateSystem(system);
+        Optional<System> systemFromDbOptional = systemService.findSystemById(id);
+        if(!systemFromDbOptional.isPresent()){
+            throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
+        }
+        System systemFromDb = systemFromDbOptional.get();
+        if(systemFromDb.getId() != systemFromModel.getId()){
+            throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
+        }
+
+        systemService.updateSystem(systemFromModel, systemFromDb);
         return "redirect:/system/active/list";
     }
 
@@ -96,6 +106,10 @@ public class SystemController {
 
     @RequestMapping("/inactive/list")
     public String showInactiveSystemList(Model model){
+        List<System> nonActiveSystem = systemService.findAllByNotActive();
+        if(nonActiveSystem.isEmpty()){
+            model.addAttribute("message", "Lista nieaktywnych systemów jest pusta");
+        }
         model.addAttribute("inactiveSystems", systemService.findAllByNotActive());
         return "system/inactiveList";
     }
@@ -116,7 +130,7 @@ public class SystemController {
         if(!system.isPresent()){
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
-        systemService.updateSystem(system.get());
+        systemService.activateSystem(system.get());
         return "redirect:/system/active/list";
     }
 

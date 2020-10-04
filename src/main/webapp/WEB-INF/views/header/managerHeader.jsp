@@ -58,9 +58,9 @@
                             </p>
                         </div>
                     </div>
-                    <p class="level-item"><a>W trakcie realizacji</a></p>
-                    <p class="level-item"><a>Ukończone</a></p>
-                    <p class="level-item"><a class="button is-success">Zamów projekt</a></p>
+                    <p class="level-item"><a href="/project/list">W trakcie realizacji</a></p>
+                    <p class="level-item"><a href="/project/list/done">Ukończone</a></p>
+                    <p class="level-item"><a href="/project/add" class="button is-success">Zamów projekt</a></p>
 
                     <p class="level-item">
                     <form action="/logout" method="post">

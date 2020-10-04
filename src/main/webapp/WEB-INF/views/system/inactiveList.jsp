@@ -12,32 +12,37 @@
 <%@include file="/WEB-INF/views/header/adminHeader.jsp" %>
 <%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp" %>
 <div class="page">
-    <section class="table">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <tr>
-                <th>Nazwa Systemu</th>
-                <th>Typ</th>
-                <th>Akcje</th>
-
-            </tr>
-            <c:forEach items="${inactiveSystems}" var="system">
+    <c:if test="${message != null}">
+        <h2 class="subtitle">${message}</h2>
+    </c:if>
+    <c:if test="${message == null}">
+        <section class="table">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                 <tr>
-                    <td>${system.name}</td>
-                    <td>${system.type}</td>
-                    <td>
-                        <div class="buttons">
-                            <a href="/system/details/${system.id}"
-                               class="button is-info">Szczegóły</a>
+                    <th>Nazwa Systemu</th>
+                    <th>Typ</th>
+                    <th>Akcje</th>
 
-                            <a href="/system/activate/${system.id}"
-                               class="button is-warning">Przywróć</a>
-                        </div>
-
-                    </td>
                 </tr>
-            </c:forEach>
-        </table>
-    </section>
+                <c:forEach items="${inactiveSystems}" var="system">
+                    <tr>
+                        <td>${system.name}</td>
+                        <td>${system.type}</td>
+                        <td>
+                            <div class="buttons">
+                                <a href="/system/details/${system.id}"
+                                   class="button is-info">Szczegóły</a>
+
+                                <a href="/system/activate/${system.id}"
+                                   class="button is-warning">Przywróć</a>
+                            </div>
+
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </section>
+    </c:if>
 </div>
 
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
