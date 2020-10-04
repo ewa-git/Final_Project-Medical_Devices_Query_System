@@ -15,6 +15,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     @Query("SELECT p FROM Project p WHERE p.active = true AND p.id = ?1")
     Optional<Project> findProjectByActiveAndProjectId(long projectId);
 
-   /* @Query("")
-    List<Project> findAllByStatusAAndManagerIAnd*/
+    @Query("SELECT p FROM Project p WHERE p.status = ?1 AND p.manager.id = ?2")
+    List<Project> findAllByStatusAndManagerId(String status, long id);
 }

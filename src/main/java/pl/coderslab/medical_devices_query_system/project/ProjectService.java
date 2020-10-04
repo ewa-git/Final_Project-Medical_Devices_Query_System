@@ -42,4 +42,8 @@ public class ProjectService {
         project.setActive(false);
         projectRepository.save(project);
     }
+
+    public List<Project> findAllByStatusAAndManagerId(String status, long id){
+        return projectRepository.findAllByStatusAndManagerId(status, id);
+    }
 }

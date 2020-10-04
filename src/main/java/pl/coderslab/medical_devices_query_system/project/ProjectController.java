@@ -18,6 +18,7 @@ import pl.coderslab.medical_devices_query_system.user.services.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.security.ProviderException;
 import java.util.List;
 import java.util.Optional;
 
@@ -128,11 +129,16 @@ public class ProjectController {
         return "redirect:/project/list";
     }
 
-/*
     @RequestMapping("/list/done")
-    public String showDoneProjectList(Model model){
+    public String showDoneProjectList(Model model, Principal principal){
+        User manager = userService.findUserByEmail(principal.getName());
+        List<Project> listOfProjectsCompleted = projectService.findAllByStatusAAndManagerId(Status.COMPLETED.toString(), manager.getId());
+        if(listOfProjectsCompleted.isEmpty()){
+            model.addAttribute("message", "Lista ukończonych projektów jest pusta");
+        }
+        model.addAttribute("projects", listOfProjectsCompleted);
+        return "project/listProject";
 
     }
-*/
 
 }

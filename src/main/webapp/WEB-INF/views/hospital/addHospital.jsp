@@ -49,7 +49,7 @@
                 <form:errors path="hospitalDetails.regon" class="help is-danger"/>
             </div>
         </div>
-        <form:hidden path="hospitalDetails.manager.id" value="${user.id}"/>
+        <form:hidden path="hospitalDetails.manager.id" value="${loggedUser.id}"/>
         <p class="control hide" id="submit">
             <form:button class="button is-success">
                 Dodaj
