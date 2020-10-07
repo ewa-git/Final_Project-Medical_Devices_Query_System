@@ -60,4 +60,8 @@ public class ProjectService {
         project.setEngineer(engineer);
         projectRepository.save(project);
     }
+
+    public List<Project> findAllByStatusAndEngineerId(String status, long id){
+        return projectRepository.findAllByStatusAndEngineerId(status, id);
+    }
 }

@@ -35,10 +35,7 @@ public class ProjectController {
     private final HospitalService hospitalService;
 
 
-/*    @ModelAttribute("loggedUser")
-    public User showUser(Principal principal) {
-        return userService.findUserByEmail(principal.getName());
-    }*/
+
 
     @ModelAttribute("systems")
     public List<System> systemList() {

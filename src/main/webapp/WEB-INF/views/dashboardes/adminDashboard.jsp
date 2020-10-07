@@ -10,14 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="/WEB-INF/views/header/adminHeader.jsp"%>
 <%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp"%>
-<%--<h1>działa</h1>
-${userLogin}
 
-<form action="/logout" method="post">
-    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-    &lt;%&ndash;<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>&ndash;%&gt;
-    <sec:csrfInput/>
-</form>--%>
 <div class="page">
     <section class="table">
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">

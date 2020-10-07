@@ -28,12 +28,6 @@ public class SystemController {
     private final UserService userService;
     private final SystemService systemService;
 
-/*
-    @ModelAttribute("loggedUser")
-    public User showUser(Principal principal) {
-        return userService.findUserByEmail(principal.getName());
-    }
-*/
 
     @ModelAttribute("type")
     public List<String> systemTypes(){
