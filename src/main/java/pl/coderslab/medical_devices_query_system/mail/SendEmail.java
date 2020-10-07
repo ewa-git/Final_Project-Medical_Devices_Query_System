@@ -9,6 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import pl.coderslab.medical_devices_query_system.model.project.Project;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -22,7 +23,7 @@ public class SendEmail {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(String comments, String emailBcc) throws IOException, TemplateException, MessagingException {
+    public void sendMail(Project project, String comments, String emailBcc) throws IOException, TemplateException, MessagingException {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
 
@@ -30,6 +31,7 @@ public class SendEmail {
         Template mailTemplate = configuration.getTemplate("completeEmail.ftlh");
         Map<String, Object> model = new HashMap<>();
         model.put("comments", comments);
+        model.put("projectCompleted", project);
         String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -38,7 +40,7 @@ public class SendEmail {
 
         messageHelper.setFrom("emailsenderportal@gmail.com");
         messageHelper.setSubject("Projekt został ukończony");
-        messageHelper.setBcc("agnieszka.sieminska@gmail.com");
+        messageHelper.setBcc(new String[]{"emailsenderportal@gmail.com", emailBcc});
         messageHelper.setText(mailBody, true);
 
         mailSender.send(mimeMessage);

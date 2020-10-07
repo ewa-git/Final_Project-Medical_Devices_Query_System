@@ -69,7 +69,7 @@ public class ProjectService {
     public void completeProject(Project project, String comments, String email) throws TemplateException, IOException, MessagingException {
         project.setStatus(Status.COMPLETED.toString());
         projectRepository.save(project);
-        mailSender.sendMail(comments, email);
+        mailSender.sendMail(project, comments, email);
     }
 
     public List<Project> findAllByStatusAndEngineerId(String status, long id){
