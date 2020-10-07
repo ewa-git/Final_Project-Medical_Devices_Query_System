@@ -67,7 +67,9 @@ public class ProjectController {
     public String showProjectListActive(Principal principal, Model model) {
         User manager = userService.findUserByEmail(principal.getName());
 
-        List<Project> projects = projectService.findAllByActiveAndManagerId(manager.getId());
+        List<Project> projects = projectService.findAllByTwoStatusAndManagerId(Status.IN_PROGRESS.toString(),
+                Status.REQUESTED.toString(),
+                manager.getId());
         if (projects.isEmpty()) {
             model.addAttribute("message", "Nie dodano jeszcze projektów");
         }
@@ -130,12 +132,12 @@ public class ProjectController {
     @RequestMapping("/list/done")
     public String showDoneProjectList(Model model, Principal principal){
         User manager = userService.findUserByEmail(principal.getName());
-        List<Project> listOfProjectsCompleted = projectService.findAllByStatusAAndManagerId(Status.COMPLETED.toString(), manager.getId());
+        List<Project> listOfProjectsCompleted = projectService.findAllByStatusAndManagerId(Status.COMPLETED.toString(), manager.getId());
         if(listOfProjectsCompleted.isEmpty()){
             model.addAttribute("message", "Lista ukończonych projektów jest pusta");
         }
         model.addAttribute("projects", listOfProjectsCompleted);
-        return "project/listProject";
+        return "project/listProjectCompleted";
     }
 
 

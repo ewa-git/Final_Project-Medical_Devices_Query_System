@@ -55,19 +55,6 @@
     </section>
 
 
-    <div class="level-left">
-        <div class="level-item">
-            <form action="/engineer/project/complete" method="post">
-                                <input type="hidden" value="${project.manager.id}" name="managerId">
-                                <label for="comm">Dodaj komentarz</label>
-                                <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea>
-                <button name="id" value="${project.id}" type="submit" class="button is-success">Ukończ</button>
-
-                <sec:csrfInput/>
-            </form>
-            <%--                        <a href="/engineer/project/complete/${project.id}" class="button is-success" type="button" >Ukończ</a>--%>
-        </div>
-    </div>
     <div class="level-right">
         <div class="level-item">
             <input action="action" class="button is-info" type="button" value="Powrót" onclick="history.go(-1);"/>

@@ -26,7 +26,7 @@ public class Project extends BaseEntity {
 
     @PrePersist
     public void setStatus() {
-        status = "requested";
+        status = Status.REQUESTED.toString();
     }
 
     @NotNull
