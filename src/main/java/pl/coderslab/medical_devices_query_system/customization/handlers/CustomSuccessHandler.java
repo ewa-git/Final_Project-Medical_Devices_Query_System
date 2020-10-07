@@ -5,7 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import pl.coderslab.medical_devices_query_system.user.model.Role;
+import pl.coderslab.medical_devices_query_system.model.user.Role;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

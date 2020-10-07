@@ -12,7 +12,7 @@
 <%@include file="/WEB-INF/views/header/managerHeader.jsp" %>
 <%@include file="/WEB-INF/views/leftmenu/managerLeftMenu.jsp" %>
 <div class="page">
-    <form:form modelAttribute="hospital" method="post">
+      <form:form modelAttribute="hospital" method="post">
         <p><form:errors path="*" class="help is-danger"/></p>
         <div class="field">
             <label class="label">Nazwa szpitala</label>

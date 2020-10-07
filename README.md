@@ -40,6 +40,7 @@ Lista funkcjonalności:
 To-do list:
 * Automatyczna generacja kosztorysu
 * Dodawanie plików na stron
+* Wykresy i tabele do zarzadzania pracą
 
 ## Status
 Project is: _in progress_

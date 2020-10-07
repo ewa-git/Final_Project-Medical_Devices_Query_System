@@ -3,8 +3,7 @@ package pl.coderslab.medical_devices_query_system.customization.validation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import pl.coderslab.medical_devices_query_system.user.reposiories.UserRepository;
-import pl.coderslab.medical_devices_query_system.user.services.UserService;
+import pl.coderslab.medical_devices_query_system.services.UserService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

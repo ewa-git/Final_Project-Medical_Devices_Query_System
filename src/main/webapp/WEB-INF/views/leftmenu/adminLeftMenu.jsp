@@ -45,8 +45,8 @@
             </p>
             <ul class="menu-list">
                 <ul>
-                    <li><a href="/admin/add/system">Projekty do przypisania</a></li>
-                    <li><a href="/admin/list/system/active">Lista projektów w realizacji</a></li>
+                    <li><a href="/admin/project/queue">Projekty do przypisania</a></li>
+                    <li><a href="/admin/project/inprogress">Lista projektów w realizacji</a></li>
                 </ul>
             </ul>
         </aside>
