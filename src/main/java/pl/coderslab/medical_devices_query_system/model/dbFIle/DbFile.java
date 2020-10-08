@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import pl.coderslab.medical_devices_query_system.model.baseEntity.BaseEntity;
-import pl.coderslab.medical_devices_query_system.model.project.Project;
+
 
 import javax.persistence.*;
 
@@ -29,8 +29,7 @@ public class DbFile extends BaseEntity {
     @Column(nullable = false, columnDefinition = "MEDIUMBLOB")
     private byte[] data;
 
-    @OneToOne
-    private Project project;
+
 
 
 }

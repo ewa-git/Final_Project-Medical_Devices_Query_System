@@ -3,6 +3,7 @@ package pl.coderslab.medical_devices_query_system.services;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.medical_devices_query_system.customization.exceptions.exception.ElementNotFoundException;
 import pl.coderslab.medical_devices_query_system.mail.SendEmail;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
@@ -67,10 +68,9 @@ public class ProjectService {
         projectRepository.save(project);
     }
 
-    public void completeProject(Project project, DbFile dbFiles, String comments, String email) throws TemplateException, IOException, MessagingException {
+    public void completeProject(Project project, String comments, String email) throws TemplateException, IOException, MessagingException {
         project.setStatus(Status.COMPLETED.toString());
-        projectRepository.save(project);
-        mailSender.sendMail(project, dbFiles, comments, email);
+        mailSender.sendMail(project, comments, email);
     }
 
     public List<Project> findAllByStatusAndEngineerId(String status, long id){
@@ -78,6 +78,12 @@ public class ProjectService {
     }
     public List<Project> findAllByTwoStatusAndManagerId(String status, String statusOptional, long id){
         return projectRepository.findAllByTwoStatusAndManagerId(status, statusOptional,id);
+    }
+
+    public void saveAttachment(Project project, DbFile dbFile){
+        List<DbFile> files = project.getFiles();
+        files.add(dbFile);
+        projectRepository.save(project);
     }
 
 }

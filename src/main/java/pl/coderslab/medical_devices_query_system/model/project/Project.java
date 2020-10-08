@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -46,6 +47,8 @@ public class Project extends BaseEntity {
     @ManyToOne
     private System system;
 
-
+    @OneToMany
+    @JoinTable(name = "projects_files")
+    private List<DbFile> files;
 
 }

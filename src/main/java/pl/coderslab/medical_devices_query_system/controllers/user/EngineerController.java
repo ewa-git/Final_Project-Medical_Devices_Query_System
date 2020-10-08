@@ -1,6 +1,7 @@
 package pl.coderslab.medical_devices_query_system.controllers.user;
 
 import freemarker.template.TemplateException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Controller;
@@ -52,16 +53,17 @@ public class EngineerController {
 
     @RequestMapping("/project/details/{id}")
     public String showProjectDetails(@PathVariable long id, Model model) {
-        Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
+        Optional<Project> projectOptional = projectService.findProjectByActiveAndProjectId(id);
 
-        if (!project.isPresent()) {
+        if (!projectOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
-        DbFile dbFile = dbFileService.findDbFileByProjectId(project.get().getId());
+        Project project = projectOptional.get();
 
-
-        model.addAttribute("file", dbFile);
-        model.addAttribute("project", project.get());
+        if(project.getFiles().isEmpty()){
+            model.addAttribute("emptyList", "Nie dodano załączników");
+        }
+        model.addAttribute("project", project);
         return "project/engineerProjectDetails";
     }
 
@@ -75,17 +77,16 @@ public class EngineerController {
         if (!project.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
-        DbFile dbFile = dbFileService.findDbFileByProjectId(project.get().getId());
         Optional<User> managerOptional = userService.findUserById(managerId);
-        if(!managerOptional.isPresent()){
+        if (!managerOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono użytkownika o id" + managerId);
         }
-        projectService.completeProject(project.get(), dbFile, comments, managerOptional.get().getEmail());
+        projectService.completeProject(project.get(), comments, managerOptional.get().getEmail());
         return "redirect:/engineer/inprogress";
     }
 
     @RequestMapping("/completed")
-    public String showCompletedProjects(Principal principal, Model model){
+    public String showCompletedProjects(Principal principal, Model model) {
         User engineer = userService.findUserByEmail(principal.getName());
         List<Project> listOfProjects = projectService.findAllByStatusAndEngineerId(Status.COMPLETED.toString(), engineer.getId());
         if (listOfProjects.isEmpty()) {
@@ -105,10 +106,6 @@ public class EngineerController {
         model.addAttribute("project", project.get());
         return "project/engineerCompletedProjectDetails";
     }
-
-
-
-
 
 
 }

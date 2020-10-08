@@ -12,9 +12,11 @@ import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFileList;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
 import pl.coderslab.medical_devices_query_system.repositories.DbFileRepository;
+import pl.coderslab.medical_devices_query_system.services.DbFileService;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,25 +26,19 @@ public class FileResourcesController {
 
     private final DbFileList dbFileList;
     private final ProjectService projectService;
-    private final DbFileRepository dbFileRepository;
+    private final DbFileService dbFileService;
 
     @PostMapping("/upload/mailAttachments")
     public String uploadAttachments(@RequestPart(name = "file") MultipartFile file,
                                     @RequestParam long idProject) throws IOException {
-        DbFile dbFile = new DbFile();
-        dbFile.setContentType(file.getContentType());
-        dbFile.setOriginalFileName(file.getOriginalFilename());
-        dbFile.setSize(file.getSize());
-        dbFile.setData(file.getBytes());
+        DbFile dbFile = dbFileService.saveFileFromWebsite(file);
         Optional<Project> projectOptional = projectService.findProjectByActiveAndProjectId(idProject);
-        if(!projectOptional.isPresent()){
+        if (!projectOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + idProject);
         }
-        dbFile.setProject(projectOptional.get());
-        dbFileRepository.save(dbFile);
-
-//        dbFileList.addToFileList(dbFile);
-        return "redirect:/engineer/project/details/" + projectOptional.get().getId();
+        Project project = projectOptional.get();
+        projectService.saveAttachment(project, dbFile);
+        return "redirect:/engineer/project/details/" + project.getId();
 
     }
 

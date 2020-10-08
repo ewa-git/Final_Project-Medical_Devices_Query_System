@@ -58,26 +58,48 @@
     <div class="level-left">
         <div class="level-item">
             <form action="/engineer/project/complete" method="post">
-                                <input type="hidden" value="${project.manager.id}" name="managerId">
-                                <label for="comm">Dodaj komentarz</label>
-                                <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea>
+                <input type="hidden" value="${project.manager.id}" name="managerId">
+                <label for="comm">Dodaj komentarz</label>
+                <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea>
                 <button name="id" value="${project.id}" type="submit" class="button is-success">Ukończ</button>
                 <sec:csrfInput/>
             </form>
+        </div>
+    </div>
+    <br>
+    <div class="level-left">
+        <div class="level-item">
             <form method="post" enctype="multipart/form-data" action="/files/upload/mailAttachments">
                 <label>Dodaj plik:
                     <input type="file" name="file"
                            accept="application/pdf,image/*"/>
                 </label>
-                <button name="idProject" value="${project.id}" type="submit" class="button is-success">Dodaj</button>
+                <button name="idProject" value="${project.id}" type="submit" class="button is-success">Dodaj
+                </button>
                 <sec:csrfInput/>
             </form>
         </div>
-    Dodany plik ${file.originalFileName}
     </div>
+    <br>
+    <div class="level-left">
+        <div class="level-item">
+            Dodane pliki:
+            <br>
+            <c:if test="${emptyList != null}">
+                ${emptyList}
+            </c:if>
+            <c:if test="${emptyList == null}">
+                <c:forEach items="${project.files}" var="file">
+                    ${file.originalFileName}<br>
+                </c:forEach>
+            </c:if>
+        </div>
+    </div>
+
     <div class="level-right">
         <div class="level-item">
-            <input action="action" class="button is-info" type="button" value="Powrót" onclick="history.go(-1);"/>
+            <input action="action" class="button is-info" type="button" value="Powrót"
+                   onclick="history.go(-1);"/>
         </div>
     </div>
 </div>

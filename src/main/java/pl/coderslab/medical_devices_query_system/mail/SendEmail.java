@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -26,6 +27,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class SendEmail {
@@ -33,7 +35,7 @@ public class SendEmail {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(Project project, DbFile attachments, String comments, String emailBcc) throws IOException, TemplateException, MessagingException {
+    public void sendMail(Project project, String comments, String emailBcc) throws IOException, TemplateException, MessagingException {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
 
@@ -47,22 +49,18 @@ public class SendEmail {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
 
-
-
-        ByteArrayResource data = getDbFileData(attachments);
         messageHelper.setFrom("emailsenderportal@gmail.com");
         messageHelper.setSubject("Projekt został ukończony");
         messageHelper.setBcc(new String[]{"emailsenderportal@gmail.com", emailBcc});
         messageHelper.setText(mailBody, true);
-        messageHelper.addAttachment(attachments.getOriginalFileName(), data);
 
+        List<DbFile> files = project.getFiles();
+        for (DbFile file : files) {
+            ByteArrayResource byteArrayFile = new ByteArrayResource(file.getData());
+            messageHelper.addAttachment(file.getOriginalFileName(), byteArrayFile);
+        }
         mailSender.send(mimeMessage);
-
-
-
-    }
-
-    private ByteArrayResource getDbFileData(DbFile dbFile) {
-        return new ByteArrayResource(dbFile.getData());
     }
 }
+
+

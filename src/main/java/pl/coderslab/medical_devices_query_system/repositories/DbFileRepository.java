@@ -5,5 +5,5 @@ import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 
 public interface DbFileRepository extends JpaRepository<DbFile, Long> {
 
-    DbFile findDbFileByProjectId(long id);
+
 }
