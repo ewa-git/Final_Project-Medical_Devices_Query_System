@@ -62,11 +62,18 @@
                                 <label for="comm">Dodaj komentarz</label>
                                 <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea>
                 <button name="id" value="${project.id}" type="submit" class="button is-success">Ukończ</button>
-
                 <sec:csrfInput/>
             </form>
-            <%--                        <a href="/engineer/project/complete/${project.id}" class="button is-success" type="button" >Ukończ</a>--%>
+            <form method="post" enctype="multipart/form-data" action="/files/upload/mailAttachments">
+                <label>Dodaj plik:
+                    <input type="file" name="file"
+                           accept="application/pdf,image/*"/>
+                </label>
+                <button name="idProject" value="${project.id}" type="submit" class="button is-success">Dodaj</button>
+                <sec:csrfInput/>
+            </form>
         </div>
+    Dodany plik ${file.originalFileName}
     </div>
     <div class="level-right">
         <div class="level-item">

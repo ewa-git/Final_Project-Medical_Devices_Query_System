@@ -4,6 +4,7 @@ import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.medical_devices_query_system.mail.SendEmail;
+import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
 import pl.coderslab.medical_devices_query_system.model.project.Status;
 import pl.coderslab.medical_devices_query_system.model.user.User;
@@ -66,10 +67,10 @@ public class ProjectService {
         projectRepository.save(project);
     }
 
-    public void completeProject(Project project, String comments, String email) throws TemplateException, IOException, MessagingException {
+    public void completeProject(Project project, DbFile dbFiles, String comments, String email) throws TemplateException, IOException, MessagingException {
         project.setStatus(Status.COMPLETED.toString());
         projectRepository.save(project);
-        mailSender.sendMail(project, comments, email);
+        mailSender.sendMail(project, dbFiles, comments, email);
     }
 
     public List<Project> findAllByStatusAndEngineerId(String status, long id){

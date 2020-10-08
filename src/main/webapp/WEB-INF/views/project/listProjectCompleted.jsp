@@ -52,8 +52,8 @@
         </section>
     </c:if>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
-<script src="/js/confirm.js"></script>
+
 </body>
 </html>

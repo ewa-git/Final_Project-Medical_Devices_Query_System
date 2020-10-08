@@ -3,6 +3,7 @@ package pl.coderslab.medical_devices_query_system.model.project;
 import lombok.Getter;
 import lombok.Setter;
 import pl.coderslab.medical_devices_query_system.model.baseEntity.BaseEntity;
+import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.hospital.Hospital;
 import pl.coderslab.medical_devices_query_system.model.system.System;
 import pl.coderslab.medical_devices_query_system.model.user.User;
@@ -10,6 +11,7 @@ import pl.coderslab.medical_devices_query_system.model.user.User;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Getter
@@ -43,5 +45,7 @@ public class Project extends BaseEntity {
     @NotNull
     @ManyToOne
     private System system;
+
+
 
 }
