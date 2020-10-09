@@ -5,12 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.medical_devices_query_system.domain.model.project.Project;
-import pl.coderslab.medical_devices_query_system.domain.model.user.Role;
 import pl.coderslab.medical_devices_query_system.domain.model.user.User;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
 import pl.coderslab.medical_devices_query_system.services.UserService;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
