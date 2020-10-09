@@ -82,8 +82,15 @@
             <div class="field-body">
                 <div class="field">
                     <div class="select">
-                        <form:select class="input" path="system.id" placeholder="system">
-                            <form:option value="" label="Wybierz system"/>
+          <%--              Użytkownik<form:select path="user.id">
+                        <form:option value="0" label="Wybierz autora"/>
+                        <form:options items="${users}" itemValue="id" itemLabel="name"/>
+                    </form:select><br>
+                        <form:errors path="user" cssClass="error"/><br>--%>
+
+
+                        <form:select class="input" path="system.id">
+                            <form:option value="0" label="Wybierz system"/>
                             <form:options items="${systems}" itemValue="id" itemLabel="name"/>
                         </form:select>
                         <p><form:errors path="system" class="help is-danger"/></p>
@@ -93,8 +100,8 @@
             <div class="field-body">
                 <div class="field">
                     <div class="select">
-                        <form:select class="input" path="hospital.id" placeholder="szpital">
-                            <form:option value="" label="Wybierz szpital"/>
+                        <form:select class="input" path="hospital.id">
+                            <form:option value="0" label="Wybierz szpital"/>
                             <form:options items="${hospitals}" itemValue="id" itemLabel="name"/>
                         </form:select>
                         <p><form:errors path="hospital" class="help is-danger"/></p>
