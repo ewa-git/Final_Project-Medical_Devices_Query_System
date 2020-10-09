@@ -30,6 +30,7 @@ public class HospitalService {
     public void editHospital(Hospital modelHospital, Hospital dbHospital){
         dbHospital.setName(modelHospital.getName());
         dbHospital.getHospitalDetails().setCity(modelHospital.getHospitalDetails().getCity());
+        dbHospital.getHospitalDetails().setStreet(modelHospital.getHospitalDetails().getStreet());
         dbHospital.getHospitalDetails().setNip(modelHospital.getHospitalDetails().getNip());
         dbHospital.getHospitalDetails().setRegon(modelHospital.getHospitalDetails().getRegon());
 

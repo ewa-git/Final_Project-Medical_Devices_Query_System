@@ -68,20 +68,20 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-info box is-light">
-                        <p class="title is-5">Pliki instalacyjne</p>
+                        <p class="title is-5">Dokumentacja instalacyjna</p>
                         <br>
                         <div class="subtitle is-6">
                             <div>
                                 <span class="icon has-text-info">
                                     <i class="fas fa-info-circle"></i>
                                 </span>
-                                Wygeneruj standardowy plik instalacyjny
+                                Wygeneruj standardową dokumentację instalacyjną
                             </div>
                             <div>
                                 <span class="icon has-text-info">
                                     <i class="fas fa-info-circle"></i>
                                 </span>
-                                Wygeneruj plik instalacyjny dostosowany do potrzeb klienta
+                                Wygeneruj dokument instalacyjny dostosowany do potrzeb klienta
                             </div>
                         </div>
                     </article>
@@ -124,7 +124,7 @@
                                 <span class="icon has-text-success">
                                     <i class="fas fa-info-circle"></i>
                                 </span>
-                            Instalacja w dubaju!
+                            Instalacja w Dubaju!
                         </div>
                         <div>
                                 <span class="icon has-text-success">

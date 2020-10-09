@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.medical_devices_query_system.customization.exceptions.exception.ElementNotFoundException;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
-import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFileList;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
 import pl.coderslab.medical_devices_query_system.services.DbFileService;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
@@ -24,7 +23,7 @@ import java.util.Optional;
 @RequestMapping("/files")
 public class FileResourcesController {
 
-    private final DbFileList dbFileList;
+
     private final ProjectService projectService;
     private final DbFileService dbFileService;
 
@@ -37,7 +36,7 @@ public class FileResourcesController {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + idProject);
         }
         Project project = projectOptional.get();
-        if(!file.isEmpty()){
+        if (!file.isEmpty()) {
             DbFile dbFile = dbFileService.saveFileFromWebsite(file);
             projectService.saveAttachment(project, dbFile);
             return "redirect:/engineer/project/details/" + project.getId();
@@ -48,12 +47,12 @@ public class FileResourcesController {
     }
 
     @PostMapping("/delete")
-    public String deleteAttachment(@RequestParam long fileId, @RequestParam long projectFileId){
+    public String deleteAttachment(@RequestParam long fileId, @RequestParam long projectFileId) {
         DbFile dbFile = dbFileService.findDbFileById(fileId);
 
         Project project = projectService.findProjectAndFilesById(projectFileId);
         projectService.deleteAttachment(project, dbFile);
-//        dbFileService.deleteFile(dbFile);
+        dbFileService.deleteFile(dbFile);
         return "redirect:/engineer/project/details/" + project.getId();
     }
 

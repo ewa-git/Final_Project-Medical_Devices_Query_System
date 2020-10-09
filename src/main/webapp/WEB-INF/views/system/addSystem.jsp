@@ -29,13 +29,12 @@
                     <form:options items="${type}"/>
                 </form:select>
                 <form:errors path="type" class="help is-danger"/>
-
             </div>
         </div>
         <div class="field">
             <label class="label">Opis</label>
             <div class="control">
-                <form:textarea class="textarea" path="description" placeholder="opis"/>
+                <form:textarea class="textarea" path="description" placeholder="opis" maxlength="250"/>
 
             </div>
         </div>

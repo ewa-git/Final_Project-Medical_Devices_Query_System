@@ -14,6 +14,7 @@ import pl.coderslab.medical_devices_query_system.repositories.ProjectRepository;
 import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,32 +74,33 @@ public class ProjectService {
         mailSender.sendMail(project, comments, email);
     }
 
-    public List<Project> findAllByStatusAndEngineerId(String status, long id){
+    public List<Project> findAllByStatusAndEngineerId(String status, long id) {
         return projectRepository.findAllByStatusAndEngineerId(status, id);
     }
-    public List<Project> findAllByTwoStatusAndManagerId(String status, String statusOptional, long id){
-        return projectRepository.findAllByTwoStatusAndManagerId(status, statusOptional,id);
+
+    public List<Project> findAllByTwoStatusAndManagerId(String status, String statusOptional, long id) {
+        return projectRepository.findAllByTwoStatusAndManagerId(status, statusOptional, id);
     }
 
-    public Project findProjectAndFilesById(long id){
-        return  projectRepository.findProjectAndFilesById(id);
+    public Project findProjectAndFilesById(long id) {
+        return projectRepository.findProjectAndFilesById(id);
     }
 
-    public void saveAttachment(Project project, DbFile dbFile){
+    public void saveAttachment(Project project, DbFile dbFile) {
         List<DbFile> files = project.getFiles();
         files.add(dbFile);
         projectRepository.save(project);
     }
 
-    public void deleteAttachment(Project project, DbFile dbFile){
+    public void deleteAttachment(Project project, DbFile dbFile) {
+        int index = 0;
         List<DbFile> dbFileList = project.getFiles();
-        for (DbFile file : dbFileList){
-            if(file.equals(dbFile)){
-                dbFileList.remove(dbFile);
+        for (int i = 0; i < dbFileList.size(); i++) {
+            if (dbFileList.get(i).getId().equals(dbFile.getId())) {
+                index = i;
             }
         }
-
-
+        dbFileList.remove(index);
     }
 
 }

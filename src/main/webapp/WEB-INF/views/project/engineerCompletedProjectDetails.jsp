@@ -57,6 +57,23 @@
                 </div>
             </div>
         </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td><strong>Załączone pliki:</strong></td>
+        </tr>
+        </thead>
+
+        <c:forEach items="${project.files}" var="file">
+            <tr>
+                <td>
+                        ${file.originalFileName}
+                </td>
+            </tr>
+        </c:forEach>
+
+    </table>
     </section>
     <div class="level-right">
         <div class="level-item">

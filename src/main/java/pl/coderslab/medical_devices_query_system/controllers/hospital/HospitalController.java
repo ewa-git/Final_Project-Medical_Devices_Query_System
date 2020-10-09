@@ -82,7 +82,7 @@ public class HospitalController {
         if (hospitalFromModel.getId() != hospitalFromDb.getId()) {
             throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
         }
-             hospitalService.editHospital(hospitalFromModel, hospitalFromDb);
+        hospitalService.editHospital(hospitalFromModel, hospitalFromDb);
         return "redirect:/hospital/list";
     }
 
