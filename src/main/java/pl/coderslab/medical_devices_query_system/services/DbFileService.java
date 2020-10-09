@@ -1,8 +1,8 @@
 package pl.coderslab.medical_devices_query_system.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.repositories.DbFileRepository;
@@ -13,6 +13,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Service
 @Transactional
+@Slf4j
 public class DbFileService {
 
     private final DbFileRepository dbFileRepository;
@@ -24,15 +25,17 @@ public class DbFileService {
         dbFile.setSize(file.getSize());
         dbFile.setData(file.getBytes());
         dbFileRepository.save(dbFile);
+        log.debug("Załącznik ze strony dodany do bazy danych", dbFile);
         return dbFile;
     }
 
-    public DbFile findDbFileById(long id){
+    public DbFile findDbFileById(long id) {
         return dbFileRepository.findDbFileById(id);
     }
 
-    public void deleteFile(DbFile dbFile){
+    public void deleteFile(DbFile dbFile) {
         dbFileRepository.deleteById(dbFile.getId());
+        log.debug("Załącznik usunięty z bazy danych", dbFile);
     }
 
 }

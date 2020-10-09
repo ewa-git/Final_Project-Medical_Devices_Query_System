@@ -10,7 +10,6 @@ import pl.coderslab.medical_devices_query_system.model.user.User;
 import pl.coderslab.medical_devices_query_system.services.UserService;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +19,6 @@ import java.util.Optional;
 public class AdminEngineerController {
 
     private final UserService userService;
-
-
 
     @GetMapping("/add")
     public String showAddFormUser(Model model) {
@@ -73,7 +70,7 @@ public class AdminEngineerController {
     }*/
 
     @PostMapping("/remove")
-    public String removeEngineer(@RequestParam long id){
+    public String removeEngineer(@RequestParam long id) {
         Optional<User> engineer = userService.findUserById(id);
         if (!engineer.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono użytkownika o id" + id);
@@ -81,14 +78,4 @@ public class AdminEngineerController {
         userService.deleteUser(engineer.get());
         return "redirect:/admin/engineer/list";
     }
-
-/*    @RequestMapping("/details/{id}")
-    public String engineerDetails(@PathVariable long id, Model model){
-        Optional<User> engineer = userService.findUserById(id);
-        if (!engineer.isPresent()) {
-            throw new ElementNotFoundException("Nie odnaleziono użytkownika o id" + id);
-        }
-        model.addAttribute("user", engineer.get());
-        return "engineer/detailsEngineer";
-    }*/
 }

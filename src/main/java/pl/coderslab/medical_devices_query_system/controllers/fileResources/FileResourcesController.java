@@ -55,5 +55,4 @@ public class FileResourcesController {
         dbFileService.deleteFile(dbFile);
         return "redirect:/engineer/project/details/" + project.getId();
     }
-
 }

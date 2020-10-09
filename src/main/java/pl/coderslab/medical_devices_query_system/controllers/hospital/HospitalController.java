@@ -28,9 +28,6 @@ public class HospitalController {
     private final UserService userService;
     private final HospitalService hospitalService;
 
-
-
-
     @GetMapping("/add")
     public String showAddFormHospital(Model model) {
         model.addAttribute("hospital", new Hospital());
@@ -50,7 +47,7 @@ public class HospitalController {
     public String showHospitalList(Principal principal, Model model) {
         User user = userService.findUserByEmail(principal.getName());
         List<Hospital> hospitals = hospitalService.findAllByActiveAndManagerId(user.getId());
-        if(hospitals.isEmpty()){
+        if (hospitals.isEmpty()) {
             model.addAttribute("message", "Nie dodano jeszcze szpitali");
         }
         model.addAttribute("hospitalList", hospitals);
@@ -95,8 +92,4 @@ public class HospitalController {
         hospitalService.deleteHospital(hospital.get());
         return "redirect:/hospital/list";
     }
-
-
-
-
 }

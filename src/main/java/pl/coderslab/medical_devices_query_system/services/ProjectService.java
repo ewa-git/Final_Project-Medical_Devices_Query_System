@@ -2,8 +2,8 @@ package pl.coderslab.medical_devices_query_system.services;
 
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pl.coderslab.medical_devices_query_system.customization.exceptions.exception.ElementNotFoundException;
 import pl.coderslab.medical_devices_query_system.mail.SendEmail;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
@@ -14,13 +14,14 @@ import pl.coderslab.medical_devices_query_system.repositories.ProjectRepository;
 import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
@@ -47,12 +48,14 @@ public class ProjectService {
         dbProject.setHospital(modelProject.getHospital());
         dbProject.setEngineer(modelProject.getEngineer());
         projectRepository.save(dbProject);
+        log.debug("Zmieniono dane projektu:", dbProject);
     }
 
     public void deleteProject(Project project) {
         project.setStatus(Status.CANCELED.toString());
         project.setActive(false);
         projectRepository.save(project);
+        log.debug("Zdeaktywowano projekt:", project);
     }
 
     public List<Project> findAllByStatusAndManagerId(String status, long id) {
@@ -67,19 +70,21 @@ public class ProjectService {
         project.setStatus(Status.IN_PROGRESS.toString());
         project.setEngineer(engineer);
         projectRepository.save(project);
+        log.debug("Przypisano projekt:", project, engineer);
     }
 
     public void completeProject(Project project, String comments, String email) throws TemplateException, IOException, MessagingException {
         project.setStatus(Status.COMPLETED.toString());
         mailSender.sendMail(project, comments, email);
+        log.debug("Ukończono projekt i wysłano maila:", project);
     }
 
     public List<Project> findAllByStatusAndEngineerId(String status, long id) {
         return projectRepository.findAllByStatusAndEngineerId(status, id);
     }
 
-    public List<Project> findAllByTwoStatusAndManagerId(String status, String statusOptional, long id) {
-        return projectRepository.findAllByTwoStatusAndManagerId(status, statusOptional, id);
+    public List<Project> findAllByTwoStatusAndManagerId(long id, String status, String statusOptional) {
+        return projectRepository.findAllByTwoStatusAndManagerId(id, status, statusOptional);
     }
 
     public Project findProjectAndFilesById(long id) {
@@ -90,6 +95,7 @@ public class ProjectService {
         List<DbFile> files = project.getFiles();
         files.add(dbFile);
         projectRepository.save(project);
+        log.debug("Przypisano załącznik do projektu:", dbFile, project);
     }
 
     public void deleteAttachment(Project project, DbFile dbFile) {
@@ -101,6 +107,7 @@ public class ProjectService {
             }
         }
         dbFileList.remove(index);
+        log.debug("Usunięto załącznik z projektu:", dbFile, project);
     }
 
 }

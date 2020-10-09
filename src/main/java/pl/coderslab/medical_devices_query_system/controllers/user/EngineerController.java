@@ -27,7 +27,6 @@ public class EngineerController {
     private final ProjectService projectService;
     private final UserService userService;
 
-
     @RequestMapping("/dashboard")
     public String showEngineerDashboard() {
         return "dashboardes/engineerDashboard";
@@ -54,7 +53,7 @@ public class EngineerController {
         }
         Project project = projectOptional.get();
 
-        if(project.getFiles().isEmpty()){
+        if (project.getFiles().isEmpty()) {
             model.addAttribute("emptyList", "Nie dodano załączników");
         }
         model.addAttribute("project", project);
@@ -64,8 +63,8 @@ public class EngineerController {
     @PostMapping("/project/complete")
     public String completeProject(@RequestParam long id,
                                   @RequestParam String comments,
-                                  @RequestParam long managerId) throws TemplateException, IOException, MessagingException {
-
+                                  @RequestParam long managerId)
+            throws TemplateException, IOException, MessagingException {
 
         Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
         if (!project.isPresent()) {
@@ -100,6 +99,4 @@ public class EngineerController {
         model.addAttribute("project", project.get());
         return "project/engineerCompletedProjectDetails";
     }
-
-
 }

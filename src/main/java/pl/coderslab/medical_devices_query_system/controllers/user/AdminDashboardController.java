@@ -14,9 +14,6 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class AdminDashboardController {
 
-    private final UserService userService;
-
-
 
     @RequestMapping("/dashboard")
     public String showAdminDashboard(){

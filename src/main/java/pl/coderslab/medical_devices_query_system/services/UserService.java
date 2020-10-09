@@ -22,23 +22,23 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public boolean existByEmail(String emailToCheck){
+    public boolean existByEmail(String emailToCheck) {
         return userRepository.existsByEmail(emailToCheck);
     }
 
-    public User findUserByEmail(String email){
+    public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
 
-    public boolean existsByRole(String role){
+    public boolean existsByRole(String role) {
         return userRepository.existsByRole(role);
     }
 
-    public List<User> findUserByActiveAndRole(String role){
+    public List<User> findUserByActiveAndRole(String role) {
         return userRepository.findUserByActiveAndRole(role);
     }
 
-    public Optional<User> findUserById(long id){
+    public Optional<User> findUserById(long id) {
         return userRepository.findById(id);
     }
 
@@ -49,8 +49,8 @@ public class UserService {
         log.debug("Użytkownik zarejestrowany:", user);
     }
 
-    public void createAdmin(){
-        if(existsByRole("ROLE_ADMIN")){
+    public void createAdmin() {
+        if (existsByRole("ROLE_ADMIN")) {
             throw new UserAlreadyExists("Użytkownik admin już istnieje");
         }
         User admin = new User();
@@ -64,25 +64,24 @@ public class UserService {
 
     }
 
-    public void createEngineer(User user){
+    public void createEngineer(User user) {
         user.setRole(Role.ROLE_ENGINEER.toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         log.debug("Użytkownik zarejestrowany:", user);
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         user.setActive(true);
         userRepository.save(user);
         log.debug("Użytkownik zaktualizowany:", user);
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         user.setActive(false);
         userRepository.save(user);
         log.debug("Usunięto użytkownika:", user);
     }
-
 
 
 }

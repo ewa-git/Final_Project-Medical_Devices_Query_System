@@ -35,7 +35,7 @@
                 <form:errors path="hospitalDetails.street" class="help is-danger"/>
             </div>
         </div>
-        <div class="field">
+        <%--<div class="field">
             <label class="label">Nip</label>
             <div class="control">
                 <form:input class="input" path="hospitalDetails.nip" placeholder="nip"/>
@@ -48,7 +48,7 @@
                 <form:input class="input" path="hospitalDetails.regon" placeholder="regon"/>
                 <form:errors path="hospitalDetails.regon" class="help is-danger"/>
             </div>
-        </div>
+        </div>--%>
         <form:hidden path="hospitalDetails.manager.id" value="${loggedUser.id}"/>
         <p class="control hide" id="submit">
             <form:button class="button is-success">

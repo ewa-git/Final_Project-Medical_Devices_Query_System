@@ -1,17 +1,14 @@
 package pl.coderslab.medical_devices_query_system.controllers.user;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
 import pl.coderslab.medical_devices_query_system.model.user.Role;
 import pl.coderslab.medical_devices_query_system.model.user.User;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
 import pl.coderslab.medical_devices_query_system.model.project.Status;
-
 import pl.coderslab.medical_devices_query_system.services.UserService;
 
 import java.util.List;
@@ -20,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/admin")
-@SessionAttributes({"choose",  "change"})
+@SessionAttributes({"choose", "change"})
 public class AdminAssignProjectController {
 
     private final ProjectService projectService;
@@ -44,9 +41,8 @@ public class AdminAssignProjectController {
 
     @PostMapping("/project/assign")
     public String assignProject(@RequestParam Long projectId,
-                               @RequestParam Long userId, Model model){
-
-        if(userId == null){
+                                @RequestParam Long userId, Model model) {
+        if (userId == null) {
             model.addAttribute("choose", "Musisz wybrać użytkownika");
             return "redirect:/admin/project/queue";
         } else {
@@ -56,13 +52,12 @@ public class AdminAssignProjectController {
             projectService.assignProject(projectFromDb, engineerFromDb);
             return "redirect:/admin/project/queue";
         }
-
     }
 
     @GetMapping("/project/inprogress")
-    public String showProjectsInProgress(Model model){
+    public String showProjectsInProgress(Model model) {
         List<Project> listOfProjectsInProgress = projectService.findAllByStatus(Status.IN_PROGRESS.toString());
-        if(listOfProjectsInProgress.isEmpty()){
+        if (listOfProjectsInProgress.isEmpty()) {
             model.addAttribute("message", "Nie ma projektów w realizacji");
             return "project/listProjectInProgress";
         }
@@ -73,8 +68,8 @@ public class AdminAssignProjectController {
     @PostMapping("/project/change")
     public String changeProjectOwner(@RequestParam Long projectId,
                                      @RequestParam Long userId,
-                                     Model model){
-        if(userId == null){
+                                     Model model) {
+        if (userId == null) {
             model.addAttribute("change", "Musisz wybrać użytkownika");
             return "redirect:/admin/project/inprogress";
         } else {
@@ -85,5 +80,4 @@ public class AdminAssignProjectController {
             return "redirect:/admin/project/inprogress";
         }
     }
-
 }

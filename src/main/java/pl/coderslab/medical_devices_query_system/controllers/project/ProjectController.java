@@ -34,9 +34,6 @@ public class ProjectController {
     private final ProjectService projectService;
     private final HospitalService hospitalService;
 
-
-
-
     @ModelAttribute("systems")
     public List<System> systemList() {
         return systemService.findAllByActive();
@@ -67,9 +64,9 @@ public class ProjectController {
     public String showProjectListActive(Principal principal, Model model) {
         User manager = userService.findUserByEmail(principal.getName());
 
-        List<Project> projects = projectService.findAllByTwoStatusAndManagerId(Status.IN_PROGRESS.toString(),
-                Status.REQUESTED.toString(),
-                manager.getId());
+        List<Project> projects = projectService.findAllByTwoStatusAndManagerId(manager.getId(),
+                Status.IN_PROGRESS.toString(),
+                Status.REQUESTED.toString());
         if (projects.isEmpty()) {
             model.addAttribute("message", "Nie dodano jeszcze projektów");
         }
@@ -78,12 +75,11 @@ public class ProjectController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormProject(@PathVariable long id, Model model){
+    public String showEditFormProject(@PathVariable long id, Model model) {
         Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
-        if(!project.isPresent()){
+        if (!project.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
-
         model.addAttribute("project", project.get());
         return "project/addProject";
     }
@@ -91,28 +87,26 @@ public class ProjectController {
     @PostMapping("/edit/{id}")
     public String editProject(@PathVariable long id,
                               @Valid Project project,
-                              BindingResult result){
-        if(result.hasErrors()){
+                              BindingResult result) {
+        if (result.hasErrors()) {
             return "project/addProject";
         }
         Optional<Project> projectFromDbOptional = projectService.findProjectByActiveAndProjectId(id);
-        if(!projectFromDbOptional.isPresent()){
+        if (!projectFromDbOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
         Project projectFromDb = projectFromDbOptional.get();
-        if(projectFromDb.getId() != project.getId()){
+        if (projectFromDb.getId() != project.getId()) {
             throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
         }
-
         projectService.updateProject(project, projectFromDb);
         return "redirect:/project/list";
-
     }
 
     @RequestMapping("/details/{id}")
-    public String projectDetails(@PathVariable long id, Model model){
+    public String projectDetails(@PathVariable long id, Model model) {
         Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
-        if(!project.isPresent()){
+        if (!project.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
         model.addAttribute("project", project.get());
@@ -120,9 +114,9 @@ public class ProjectController {
     }
 
     @PostMapping("/remove")
-    public String removeProject(@RequestParam long id){
+    public String removeProject(@RequestParam long id) {
         Optional<Project> project = projectService.findProjectByActiveAndProjectId(id);
-        if(!project.isPresent()){
+        if (!project.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + id);
         }
         projectService.deleteProject(project.get());
@@ -130,16 +124,13 @@ public class ProjectController {
     }
 
     @RequestMapping("/list/done")
-    public String showDoneProjectList(Model model, Principal principal){
+    public String showDoneProjectList(Model model, Principal principal) {
         User manager = userService.findUserByEmail(principal.getName());
         List<Project> listOfProjectsCompleted = projectService.findAllByStatusAndManagerId(Status.COMPLETED.toString(), manager.getId());
-        if(listOfProjectsCompleted.isEmpty()){
+        if (listOfProjectsCompleted.isEmpty()) {
             model.addAttribute("message", "Lista ukończonych projektów jest pusta");
         }
         model.addAttribute("projects", listOfProjectsCompleted);
         return "project/listProjectCompleted";
     }
-
-
-
 }

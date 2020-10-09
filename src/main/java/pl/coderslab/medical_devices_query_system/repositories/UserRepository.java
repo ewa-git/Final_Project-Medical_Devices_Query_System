@@ -9,7 +9,9 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String emailToCheck);
+
     User findUserByEmail(String email);
+
     boolean existsByRole(String role);
 
     @Query("SELECT u FROM User u WHERE u.active = true AND u.role = ?1")

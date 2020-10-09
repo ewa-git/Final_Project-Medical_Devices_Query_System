@@ -30,7 +30,7 @@ public class SystemController {
 
 
     @ModelAttribute("type")
-    public List<String> systemTypes(){
+    public List<String> systemTypes() {
         List<String> systemTypeList = new ArrayList<>();
         systemTypeList.add(SystemType.X_RAY.toString());
         systemTypeList.add(SystemType.COMPUTER_TOMOGRAPHY.toString());
@@ -39,14 +39,14 @@ public class SystemController {
     }
 
     @GetMapping("/add")
-    public String showAddSystemForm(Model model){
+    public String showAddSystemForm(Model model) {
         model.addAttribute("system", new System());
         return "system/addSystem";
     }
 
     @PostMapping("/add")
-    public String addSystem(@Valid System system, BindingResult result){
-        if(result.hasErrors()){
+    public String addSystem(@Valid System system, BindingResult result) {
+        if (result.hasErrors()) {
             return "system/addSystem";
         }
         systemService.saveSystem(system);
@@ -54,9 +54,9 @@ public class SystemController {
     }
 
     @RequestMapping("/active/list")
-    public String showActiveSystemList(Model model){
+    public String showActiveSystemList(Model model) {
         List<System> activeSystemList = systemService.findAllByActive();
-        if (activeSystemList.isEmpty()){
+        if (activeSystemList.isEmpty()) {
             model.addAttribute("message", "Nie dodano jeszcze systemów");
         }
         model.addAttribute("activeSystems", systemService.findAllByActive());
@@ -64,9 +64,9 @@ public class SystemController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormSystem(@PathVariable long id, Model model){
+    public String showEditFormSystem(@PathVariable long id, Model model) {
         Optional<System> system = systemService.findSystemById(id);
-        if(!system.isPresent()){
+        if (!system.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
         model.addAttribute("system", system.get());
@@ -76,16 +76,16 @@ public class SystemController {
     @PostMapping("/edit/{id}")
     public String editSystem(@PathVariable long id,
                              @Valid System systemFromModel,
-                             BindingResult result){
-        if(result.hasErrors()){
+                             BindingResult result) {
+        if (result.hasErrors()) {
             return "system/addSystem";
         }
         Optional<System> systemFromDbOptional = systemService.findSystemById(id);
-        if(!systemFromDbOptional.isPresent()){
+        if (!systemFromDbOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
         System systemFromDb = systemFromDbOptional.get();
-        if(systemFromDb.getId() != systemFromModel.getId()){
+        if (systemFromDb.getId() != systemFromModel.getId()) {
             throw new IdsAreNotTheSameException("Id podane w adresie nie zgadza się z tym z modelu");
         }
 
@@ -94,9 +94,9 @@ public class SystemController {
     }
 
     @PostMapping("/remove")
-    public String deactivateSystem(@RequestParam long id){
+    public String deactivateSystem(@RequestParam long id) {
         Optional<System> system = systemService.findSystemById(id);
-        if(!system.isPresent()){
+        if (!system.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
         systemService.deactivateSystem(system.get());
@@ -104,9 +104,9 @@ public class SystemController {
     }
 
     @RequestMapping("/inactive/list")
-    public String showInactiveSystemList(Model model){
+    public String showInactiveSystemList(Model model) {
         List<System> nonActiveSystem = systemService.findAllByNotActive();
-        if(nonActiveSystem.isEmpty()){
+        if (nonActiveSystem.isEmpty()) {
             model.addAttribute("message", "Lista nieaktywnych systemów jest pusta");
         }
         model.addAttribute("inactiveSystems", systemService.findAllByNotActive());
@@ -114,9 +114,9 @@ public class SystemController {
     }
 
     @RequestMapping("/details/{id}")
-    public String showDetailsSystem(@PathVariable long id, Model model){
+    public String showDetailsSystem(@PathVariable long id, Model model) {
         Optional<System> system = systemService.findSystemById(id);
-        if(!system.isPresent()){
+        if (!system.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
         model.addAttribute("system", system.get());
@@ -124,13 +124,12 @@ public class SystemController {
     }
 
     @RequestMapping("/activate/{id}")
-    public String activateSystem(@PathVariable long id){
+    public String activateSystem(@PathVariable long id) {
         Optional<System> system = systemService.findSystemById(id);
-        if(!system.isPresent()){
+        if (!system.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono systemu o id " + id);
         }
         systemService.activateSystem(system.get());
         return "redirect:/system/active/list";
     }
-
 }

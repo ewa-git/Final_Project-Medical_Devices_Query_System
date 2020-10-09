@@ -12,7 +12,7 @@ public class CreateAdminController {
     private final UserService userService;
 
     @RequestMapping("/create/admin")
-    public String createAdmin(){
+    public String createAdmin() {
         userService.createAdmin();
         return "redirect:/login";
     }
