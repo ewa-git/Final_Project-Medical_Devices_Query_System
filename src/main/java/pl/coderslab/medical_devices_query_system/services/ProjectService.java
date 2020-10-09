@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.coderslab.medical_devices_query_system.mail.SendEmail;
-import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
-import pl.coderslab.medical_devices_query_system.model.project.Project;
-import pl.coderslab.medical_devices_query_system.model.project.Status;
-import pl.coderslab.medical_devices_query_system.model.user.User;
-import pl.coderslab.medical_devices_query_system.repositories.ProjectRepository;
+import pl.coderslab.medical_devices_query_system.domain.model.dbFIle.DbFile;
+import pl.coderslab.medical_devices_query_system.domain.model.project.Project;
+import pl.coderslab.medical_devices_query_system.domain.model.project.Status;
+import pl.coderslab.medical_devices_query_system.domain.model.user.User;
+import pl.coderslab.medical_devices_query_system.domain.repositories.ProjectRepository;
 
 import javax.mail.MessagingException;
 import javax.transaction.Transactional;

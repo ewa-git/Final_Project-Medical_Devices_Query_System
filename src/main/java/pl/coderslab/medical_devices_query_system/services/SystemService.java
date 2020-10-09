@@ -2,8 +2,8 @@ package pl.coderslab.medical_devices_query_system.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.coderslab.medical_devices_query_system.model.system.System;
-import pl.coderslab.medical_devices_query_system.repositories.SystemRepository;
+import pl.coderslab.medical_devices_query_system.domain.model.system.System;
+import pl.coderslab.medical_devices_query_system.domain.repositories.SystemRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

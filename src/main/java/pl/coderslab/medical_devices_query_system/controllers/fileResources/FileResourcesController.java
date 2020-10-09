@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import pl.coderslab.medical_devices_query_system.customization.exceptions.exception.ElementNotFoundException;
-import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
-import pl.coderslab.medical_devices_query_system.model.project.Project;
+import pl.coderslab.medical_devices_query_system.exceptions.ElementNotFoundException;
+import pl.coderslab.medical_devices_query_system.domain.model.dbFIle.DbFile;
+import pl.coderslab.medical_devices_query_system.domain.model.project.Project;
 import pl.coderslab.medical_devices_query_system.services.DbFileService;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
 

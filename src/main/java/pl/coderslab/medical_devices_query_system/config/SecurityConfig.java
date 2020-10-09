@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.coderslab.medical_devices_query_system.customization.handlers.CustomSuccessHandler;
+import pl.coderslab.medical_devices_query_system.handlers.CustomSuccessHandler;
 import javax.sql.DataSource;
 
 

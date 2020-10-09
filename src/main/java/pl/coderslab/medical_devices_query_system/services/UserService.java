@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.coderslab.medical_devices_query_system.customization.exceptions.exception.UserAlreadyExists;
-import pl.coderslab.medical_devices_query_system.model.user.Role;
-import pl.coderslab.medical_devices_query_system.model.user.User;
-import pl.coderslab.medical_devices_query_system.repositories.UserRepository;
+import pl.coderslab.medical_devices_query_system.exceptions.UserAlreadyExists;
+import pl.coderslab.medical_devices_query_system.domain.model.user.Role;
+import pl.coderslab.medical_devices_query_system.domain.model.user.User;
+import pl.coderslab.medical_devices_query_system.domain.repositories.UserRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

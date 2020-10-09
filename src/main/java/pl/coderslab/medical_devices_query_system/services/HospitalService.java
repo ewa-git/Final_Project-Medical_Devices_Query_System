@@ -3,8 +3,8 @@ package pl.coderslab.medical_devices_query_system.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pl.coderslab.medical_devices_query_system.model.hospital.Hospital;
-import pl.coderslab.medical_devices_query_system.repositories.HospitalRepository;
+import pl.coderslab.medical_devices_query_system.domain.model.hospital.Hospital;
+import pl.coderslab.medical_devices_query_system.domain.repositories.HospitalRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

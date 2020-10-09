@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
-import pl.coderslab.medical_devices_query_system.repositories.DbFileRepository;
+import pl.coderslab.medical_devices_query_system.domain.model.dbFIle.DbFile;
+import pl.coderslab.medical_devices_query_system.domain.repositories.DbFileRepository;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
