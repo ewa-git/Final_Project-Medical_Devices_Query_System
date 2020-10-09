@@ -41,7 +41,7 @@
                 <!-- Right side -->
                 <div class="navbar-end">
                 <div class="level-right">
-                    <div class="level-item">
+                   <%-- <div class="level-item">
                         <p class="subtitle is-5">
                             <strong>123</strong> projekty
                         </p>
@@ -57,7 +57,7 @@
                                 </button>
                             </p>
                         </div>
-                    </div>
+                    </div>--%>
                     <p class="level-item"><a href="/project/list">W trakcie realizacji</a></p>
                     <p class="level-item"><a href="/project/list/done">Ukończone</a></p>
                     <p class="level-item"><a href="/project/add" class="button is-success">Zamów projekt</a></p>

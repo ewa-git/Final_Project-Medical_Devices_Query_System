@@ -17,9 +17,9 @@
             <ul class="menu-list">
                 <li><a href="/engineer/dashboard">Strona główna</a></li>
             </ul>
-            <ul class="menu-list">
+            <%--<ul class="menu-list">
                 <li><a>Edycja danych</a></li>
-            </ul>
+            </ul>--%>
 
             <p class="menu-label">
                 Projekty
@@ -27,7 +27,7 @@
             <ul class="menu-list">
                 <ul>
                     <li><a href="/engineer/inprogress">Projekty w realizacji</a></li>
-                    <li><a href="/engineer/completed">Ukoczone</a></li>
+                    <li><a href="/engineer/completed">Ukoczońe</a></li>
                 </ul>
             </ul>
         </aside>

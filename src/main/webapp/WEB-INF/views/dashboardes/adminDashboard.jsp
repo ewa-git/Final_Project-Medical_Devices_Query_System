@@ -12,20 +12,9 @@
 <%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp"%>
 
 <div class="page">
-    <section class="table">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <tr>
-                <th>cos
-                </th>
-            </tr>
-            <tr>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>2</td>
-            </tr>
-        </table>
-    </section>
+    <p class="title">Tu powstaną statystyki i wykresy i tabelki z obciążeniem pracą</p>
+    <br>
+    <img src="/images/wykres.png">
 </div>
 </div>
 <%@include file="/WEB-INF/views/footer/footer.jsp"%>

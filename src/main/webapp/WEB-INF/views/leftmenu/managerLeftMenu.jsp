@@ -17,10 +17,10 @@
             <ul class="menu-list">
                 <li><a href="/manager/dashboard">Strona główna</a></li>
             </ul>
-            <ul class="menu-list">
+           <%-- <ul class="menu-list">
                 <li><a>Edycja danych</a></li>
             </ul>
-
+--%>
             <p class="menu-label">
                 Szpitale
             </p>
