@@ -33,26 +33,6 @@
                             </article>
                     </div>
                 </div>
-<%--                <div class="tile is-parent">
-                    <article class="tile is-child notification is-info">
-                        <p class="title">Zdjęcie</p>
-                        <p class="subtitle">With an image</p>
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
-                        </figure>
-                    </article>
-                </div>
-            </div>--%>
-
-                <%--                <div class="tile is-parent">
-                                    <article class="tile is-child notification is-danger">
-                                        <p class="title">Wide tile</p>
-                                        <p class="subtitle">Aligned with the right tile</p>
-                                        <div class="content">
-                                            <!-- Content -->
-                                        </div>
-                                    </article>
-                                </div>--%>
             </div>
         </div>
     </section>
@@ -62,7 +42,6 @@
         </div>
     </div>
 </div>
-
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
 <script src="/js/confirm.js"></script>
 </body>

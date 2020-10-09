@@ -65,7 +65,6 @@
                                 </div>
                                 <sec:csrfInput/>
                             </form>
-
                         </td>
                     </tr>
                 </c:forEach>

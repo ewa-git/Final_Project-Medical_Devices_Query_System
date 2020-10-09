@@ -13,60 +13,56 @@
 <%@include file="/WEB-INF/views/leftmenu/adminLeftMenu.jsp" %>
 
 <div class="page">
-<c:if test="${message != null}">
-    <h2 class="subtitle">${message}</h2>
-</c:if>
-<c:if test="${message == null}">
-    <section class="table">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <tr>
-                <th>Nazwa Systemu</th>
-                <th>Typ</th>
-
-            </tr>
-
-            <c:forEach items="${activeSystems}" var="system">
-            <tr>
-                <td>${system.name}</td>
-                <td>${system.type}</td>
-                <td>
-                    <div class="buttons">
-                        <a href="/system/edit/${system.id}"
-                           class="button is-warning">Edytuj</a>
-                        <a href="/system/details/${system.id}"
-                           class="button is-info">Szczegóły</a>
-                        <a href="" class="popup button is-danger" data-windowId="#window${system.id}">Zdezaktywuj</a>
-                        <div id="window${system.id}" class="popup-outside">
-                            <div class="popup-inside">
-                                <div class="notification is-link is-light popup-inside">
-                                    <br>
-                                    <strong>Czy na pewno chesz zdeaktywować?</strong>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="level-right">
-                                        <div class="buttons">
-                                            <button id="close" class="button is-success">Anuluj</button>
-                                            <form method="post" action="/system/remove">
-                                                <button id="delete" name="id" value="${system.id}"
-                                                        class="button is-danger">Przenieś do nieaktywnych
-                                                </button>
-                                                <sec:csrfInput/>
-                                            </form>
+    <c:if test="${message != null}">
+        <h2 class="subtitle">${message}</h2>
+    </c:if>
+    <c:if test="${message == null}">
+        <section class="table">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <tr>
+                    <th>Nazwa Systemu</th>
+                    <th>Typ</th>
+                </tr>
+                <c:forEach items="${activeSystems}" var="system">
+                    <tr>
+                        <td>${system.name}</td>
+                        <td>${system.type}</td>
+                        <td>
+                            <div class="buttons">
+                                <a href="/system/edit/${system.id}"
+                                   class="button is-warning">Edytuj</a>
+                                <a href="/system/details/${system.id}"
+                                   class="button is-info">Szczegóły</a>
+                                <a href="" class="popup button is-danger" data-windowId="#window${system.id}">Zdezaktywuj</a>
+                                <div id="window${system.id}" class="popup-outside">
+                                    <div class="popup-inside">
+                                        <div class="notification is-link is-light popup-inside">
+                                            <br>
+                                            <strong>Czy na pewno chesz zdeaktywować?</strong>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="level-right">
+                                                <div class="buttons">
+                                                    <button id="close" class="button is-success">Anuluj</button>
+                                                    <form method="post" action="/system/remove">
+                                                        <button id="delete" name="id" value="${system.id}"
+                                                                class="button is-danger">Przenieś do nieaktywnych
+                                                        </button>
+                                                        <sec:csrfInput/>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            </c:forEach>
-
-    </div>
-    </table>
-    </section>
-</c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </section>
+    </c:if>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>

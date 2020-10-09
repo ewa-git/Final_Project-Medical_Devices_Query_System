@@ -58,8 +58,6 @@
             </div>
         </div>
     </section>
-
-
     <div class="level-left">
         <div class="level-item">
             <form method="post" enctype="multipart/form-data" action="/files/upload/mailAttachments">
@@ -90,7 +88,6 @@
                         <td>Dodane pliki:</td>
                     </tr>
                     </thead>
-
                     <c:forEach items="${project.files}" var="file">
                         <tr>
                             <td>
@@ -107,9 +104,7 @@
                             </td>
                         </tr>
                     </c:forEach>
-
                 </table>
-
             </c:if>
         </div>
     </div>
@@ -125,8 +120,6 @@
             </form>
         </div>
     </div>
-
-
     <div class="level-right">
         <div class="level-item">
             <input action="action" class="button is-info" type="button" value="Powrót"
@@ -134,8 +127,6 @@
         </div>
     </div>
 </div>
-
-
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
 </body>
 </html>

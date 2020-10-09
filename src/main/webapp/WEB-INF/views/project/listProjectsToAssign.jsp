@@ -74,28 +74,3 @@
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
 </body>
 </html>
-
-<%--                            <form:form method="post" modelAttribute="project" action="/admin/project/assign">
-                                <form:hidden path="id"/>
-                                <nav class="level">
-                                    <div class="field">
-                                        <div class="control">
-                                            <div class="select is-primary">
-
-                                                <form:select class="input" path="engineer.id">
-                                                    <form:option value="" label="Wybierz pracownika"/>
-
-                                                    <form:options items="${engineersList}" itemValue="id"
-                                                                  itemLabel="fullName"/>
-
-                                                </form:select>
-                                                <p><form:errors path="engineer" class="help is-danger"/></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form:button class="button is-success">
-                                        Przypisz
-                                    </form:button>
-                                </nav>
-                                <sec:csrfInput/>
-                            </form:form>--%>

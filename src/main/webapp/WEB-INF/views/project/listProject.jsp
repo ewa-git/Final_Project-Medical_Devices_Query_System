@@ -25,7 +25,6 @@
                     <th>Status</th>
                     <th>Osoba odp. za realizacje</th>
                     <th>Akcje</th>
-
                 </tr>
                 <c:forEach items="${projects}" var="project">
                     <tr>

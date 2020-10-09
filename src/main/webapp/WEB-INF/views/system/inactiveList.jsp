@@ -22,7 +22,6 @@
                     <th>Nazwa Systemu</th>
                     <th>Typ</th>
                     <th>Akcje</th>
-
                 </tr>
                 <c:forEach items="${inactiveSystems}" var="system">
                     <tr>
@@ -36,7 +35,6 @@
                                 <a href="/system/activate/${system.id}"
                                    class="button is-warning">Przywróć</a>
                             </div>
-
                         </td>
                     </tr>
                 </c:forEach>

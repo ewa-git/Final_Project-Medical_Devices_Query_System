@@ -25,7 +25,6 @@
                     <th>Status</th>
                     <th>Osoba odp. za realizacje</th>
                     <th>Akcje</th>
-
                 </tr>
                 <c:forEach items="${projects}" var="project">
                     <tr>
@@ -35,12 +34,10 @@
                         <td>${project.manager.fullName}</td>
                         <td>${project.status}</td>
                         <td>${project.engineer.fullName}</td>
-
                         <td>
                             <div class="buttons">
                                 <a href="/engineer/project/details/${project.id}"
                                    class="button is-info">Szczegóły</a>
-
                             </div>
                         </td>
                     </tr>

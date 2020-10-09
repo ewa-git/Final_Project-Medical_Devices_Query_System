@@ -25,7 +25,6 @@
                     <th>Status</th>
                     <th>Osoba odp. za realizacje</th>
                     <th>Akcje</th>
-
                 </tr>
                 <c:forEach items="${projects}" var="project">
                     <tr>
@@ -43,7 +42,6 @@
                             <div class="buttons">
                                 <a href="/project/details/${project.id}"
                                    class="button is-info">Szczegóły</a>
-
                             </div>
                         </td>
                     </tr>
@@ -52,7 +50,6 @@
         </section>
     </c:if>
 </div>
-
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
 
 </body>

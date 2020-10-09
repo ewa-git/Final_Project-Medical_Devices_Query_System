@@ -72,7 +72,5 @@
         <sec:csrfInput/>
     </form:form><br>
 </section>
-<%--    </div>--%>
-<%--</div>--%>
 </body>
 </html>
