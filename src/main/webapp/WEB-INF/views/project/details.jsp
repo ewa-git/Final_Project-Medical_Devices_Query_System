@@ -19,57 +19,45 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Numer projektu</p>
-                            <p class="subtitle">${project.id}</p>
+                            <p class="title is-5">Numer projektu</p>
+                            <p class="subtitle is-6">${project.id}</p>
                         </article>
+
                         <article class="tile is-child notification is-primary">
-                            <p class="title">System</p>
-                            <p class="subtitle">${project.system.name}</p>
+                            <p class="title is-5">System</p>
+                            <p class="subtitle is-6">${project.system.name}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification is-warning">
+                            <p class="title is-5">Szpital</p>
+                            <p class="subtitle is-6">${project.hospital.name}
+                                (${project.hospital.hospitalDetails.city})</p>
                         </article>
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Szpital</p>
-                            <p class="subtitle">${project.hospital.name} (${project.hospital.hospitalDetails.city})</p>
+                            <p class="title is-5">Nazwa pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomName}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Nazwa pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomName}</p>
-                        </article>
-                        <article class="tile is-child notification is-warning">
-                            <p class="title">Wysokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.height}</p>
+                            <p class="title is-5">Wysokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.height}</p>
                         </article>
                         <article class="tile is-child notification is-info">
-                            <p class="title">Szerokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomLength}</p>
+                            <p class="title is-5">Szerokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomLength}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Długość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomWidth}</p>
+                            <p class="title is-5">Długość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomWidth}</p>
                         </article>
-                        <c:if test="${project.engineer == null}">
-                        <article class="tile is-child notification is-info">
-                            <p class="title">Osoba odpowiedzialna za realizację</p>
-                            <p class="subtitle">nieprzypisano</p>
-                        </article>
-                        </c:if>
-                        <c:if test="${project.engineer != null}">
-                            <article class="tile is-child notification is-info">
-                            <p class="title">Osoba odpowiedzialna za realizację</p>
-                            <p class="subtitle">${project.engineer.fullName}</p>
-                            </article>
-                        </c:if>
                     </div>
                 </div>
             </div>
-            <%--            <div class="tile is-parent">
-                            <article class="tile is-child notification is-info">
-                                <p class="title">Szerokość pokoju</p>
-                                <p class="subtitle">${project.projectDetails.roomLength}</p>
-                            </article>
-                        </div>--%>
         </div>
-
-
     </section>
     <div class="level-right">
         <div class="level-item">
