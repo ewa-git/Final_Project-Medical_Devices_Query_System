@@ -2,6 +2,7 @@ package pl.coderslab.medical_devices_query_system.controllers.fileResources;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,12 +12,11 @@ import pl.coderslab.medical_devices_query_system.customization.exceptions.except
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFile;
 import pl.coderslab.medical_devices_query_system.model.dbFIle.DbFileList;
 import pl.coderslab.medical_devices_query_system.model.project.Project;
-import pl.coderslab.medical_devices_query_system.repositories.DbFileRepository;
 import pl.coderslab.medical_devices_query_system.services.DbFileService;
 import pl.coderslab.medical_devices_query_system.services.ProjectService;
 
 import java.io.IOException;
-import java.util.List;
+
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -30,16 +30,31 @@ public class FileResourcesController {
 
     @PostMapping("/upload/mailAttachments")
     public String uploadAttachments(@RequestPart(name = "file") MultipartFile file,
-                                    @RequestParam long idProject) throws IOException {
-        DbFile dbFile = dbFileService.saveFileFromWebsite(file);
+                                    @RequestParam long idProject,
+                                    Model model) throws IOException {
         Optional<Project> projectOptional = projectService.findProjectByActiveAndProjectId(idProject);
         if (!projectOptional.isPresent()) {
             throw new ElementNotFoundException("Nie odnaleziono projektu o id" + idProject);
         }
         Project project = projectOptional.get();
-        projectService.saveAttachment(project, dbFile);
-        return "redirect:/engineer/project/details/" + project.getId();
+        if(!file.isEmpty()){
+            DbFile dbFile = dbFileService.saveFileFromWebsite(file);
+            projectService.saveAttachment(project, dbFile);
+            return "redirect:/engineer/project/details/" + project.getId();
+        } else {
+            model.addAttribute("emptyFile", "nie wybrano pliku");
+            return "redirect:/engineer/project/details/" + project.getId();
+        }
+    }
 
+    @PostMapping("/delete")
+    public String deleteAttachment(@RequestParam long fileId, @RequestParam long projectFileId){
+        DbFile dbFile = dbFileService.findDbFileById(fileId);
+
+        Project project = projectService.findProjectAndFilesById(projectFileId);
+        projectService.deleteAttachment(project, dbFile);
+//        dbFileService.deleteFile(dbFile);
+        return "redirect:/engineer/project/details/" + project.getId();
     }
 
 }

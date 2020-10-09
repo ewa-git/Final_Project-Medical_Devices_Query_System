@@ -27,4 +27,12 @@ public class DbFileService {
         return dbFile;
     }
 
+    public DbFile findDbFileById(long id){
+        return dbFileRepository.findDbFileById(id);
+    }
+
+    public void deleteFile(DbFile dbFile){
+        dbFileRepository.deleteById(dbFile.getId());
+    }
+
 }

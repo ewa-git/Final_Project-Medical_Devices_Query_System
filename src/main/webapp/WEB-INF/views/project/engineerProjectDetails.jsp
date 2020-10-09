@@ -18,55 +18,48 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Numer projektu</p>
-                            <p class="subtitle">${project.id}</p>
+                            <p class="title is-4">Numer projektu</p>
+                            <p class="subtitle is-6">${project.id}</p>
                         </article>
+
                         <article class="tile is-child notification is-primary">
-                            <p class="title">System</p>
-                            <p class="subtitle">${project.system.name}</p>
+                            <p class="title is-4">System</p>
+                            <p class="subtitle is-6">${project.system.name}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification is-warning">
+                            <p class="title is-4">Szpital</p>
+                            <p class="subtitle is-6">${project.hospital.name}
+                                (${project.hospital.hospitalDetails.city})</p>
                         </article>
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Szpital</p>
-                            <p class="subtitle">${project.hospital.name} (${project.hospital.hospitalDetails.city})</p>
+                            <p class="title is-4">Nazwa pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomName}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Nazwa pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomName}</p>
-                        </article>
-                        <article class="tile is-child notification is-warning">
-                            <p class="title">Wysokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.height}</p>
+                            <p class="title is-4">Wysokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.height}</p>
                         </article>
                         <article class="tile is-child notification is-info">
-                            <p class="title">Szerokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomLength}</p>
+                            <p class="title is-4">Szerokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomLength}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Długość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomWidth}</p>
+                            <p class="title is-4">Długość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomWidth}</p>
                         </article>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     </section>
 
 
-    <div class="level-left">
-        <div class="level-item">
-            <form action="/engineer/project/complete" method="post">
-                <input type="hidden" value="${project.manager.id}" name="managerId">
-                <label for="comm">Dodaj komentarz</label>
-                <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea>
-                <button name="id" value="${project.id}" type="submit" class="button is-success">Ukończ</button>
-                <sec:csrfInput/>
-            </form>
-        </div>
-    </div>
-    <br>
     <div class="level-left">
         <div class="level-item">
             <form method="post" enctype="multipart/form-data" action="/files/upload/mailAttachments">
@@ -83,18 +76,56 @@
     <br>
     <div class="level-left">
         <div class="level-item">
-            Dodane pliki:
-            <br>
+            <c:if test="${emptyFile != null}">
+                ${emptyFile}
+            </c:if>
+
             <c:if test="${emptyList != null}">
                 ${emptyList}
             </c:if>
             <c:if test="${emptyList == null}">
-                <c:forEach items="${project.files}" var="file">
-                    ${file.originalFileName}<br>
-                </c:forEach>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>Dodane pliki:</td>
+                    </tr>
+                    </thead>
+
+                    <c:forEach items="${project.files}" var="file">
+                        <tr>
+                            <td>
+                                    ${file.originalFileName}
+                            </td>
+                            <td>
+                                <form action="/files/delete" method="post">
+                                    <input type="hidden" value="${file.id}" name="fileId">
+                                    <button name="projectFileId" value="${project.id}" type="submit"
+                                            class="button is-success">Usuń plik
+                                    </button>
+                                    <sec:csrfInput/>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+                </table>
+
             </c:if>
         </div>
     </div>
+    <br>
+    <div class="level-left">
+        <div class="level-item">
+            <form action="/engineer/project/complete" method="post">
+                <input type="hidden" value="${project.manager.id}" name="managerId">
+                <label for="comm">Dodaj komentarz</label>
+                <textarea id="comm" name="comments" class="textarea" placeholder="Komentarze do zamówienia"></textarea><br>
+                <button name="id" value="${project.id}" type="submit" class="button is-success">Ukończ</button>
+                <sec:csrfInput/>
+            </form>
+        </div>
+    </div>
+
 
     <div class="level-right">
         <div class="level-item">

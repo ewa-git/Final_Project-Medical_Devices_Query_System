@@ -80,10 +80,25 @@ public class ProjectService {
         return projectRepository.findAllByTwoStatusAndManagerId(status, statusOptional,id);
     }
 
+    public Project findProjectAndFilesById(long id){
+        return  projectRepository.findProjectAndFilesById(id);
+    }
+
     public void saveAttachment(Project project, DbFile dbFile){
         List<DbFile> files = project.getFiles();
         files.add(dbFile);
         projectRepository.save(project);
+    }
+
+    public void deleteAttachment(Project project, DbFile dbFile){
+        List<DbFile> dbFileList = project.getFiles();
+        for (DbFile file : dbFileList){
+            if(file.equals(dbFile)){
+                dbFileList.remove(dbFile);
+            }
+        }
+
+
     }
 
 }

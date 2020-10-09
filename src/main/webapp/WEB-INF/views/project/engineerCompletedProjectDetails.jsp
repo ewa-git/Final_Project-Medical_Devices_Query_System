@@ -18,43 +18,46 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Numer projektu</p>
-                            <p class="subtitle">${project.id}</p>
+                            <p class="title is-4">Numer projektu</p>
+                            <p class="subtitle is-6">${project.id}</p>
                         </article>
+
                         <article class="tile is-child notification is-primary">
-                            <p class="title">System</p>
-                            <p class="subtitle">${project.system.name}</p>
+                            <p class="title is-4">System</p>
+                            <p class="subtitle is-6">${project.system.name}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification is-warning">
+                            <p class="title is-4">Szpital</p>
+                            <p class="subtitle is-6">${project.hospital.name}
+                                (${project.hospital.hospitalDetails.city})</p>
                         </article>
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Szpital</p>
-                            <p class="subtitle">${project.hospital.name} (${project.hospital.hospitalDetails.city})</p>
+                            <p class="title is-4">Nazwa pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomName}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Nazwa pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomName}</p>
-                        </article>
-                        <article class="tile is-child notification is-warning">
-                            <p class="title">Wysokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.height}</p>
+                            <p class="title is-4">Wysokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.height}</p>
                         </article>
                         <article class="tile is-child notification is-info">
-                            <p class="title">Szerokość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomLength}</p>
+                            <p class="title is-4">Szerokość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomLength}</p>
                         </article>
+                    </div>
+                    <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Długość pokoju</p>
-                            <p class="subtitle">${project.projectDetails.roomWidth}</p>
+                            <p class="title is-4">Długość pokoju</p>
+                            <p class="subtitle is-6">${project.projectDetails.roomWidth}</p>
                         </article>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     </section>
-
-
     <div class="level-right">
         <div class="level-item">
             <input action="action" class="button is-info" type="button" value="Powrót" onclick="history.go(-1);"/>
