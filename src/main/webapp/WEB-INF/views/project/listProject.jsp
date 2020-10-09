@@ -32,7 +32,7 @@
                         <td>${project.id}</td>
                         <td>${project.hospital.name} (${project.hospital.hospitalDetails.city})</td>
                         <td>${project.system.name}</td>
-                        <td>${project.status}</td>
+                        <td class="status" data-buttonId="#button${project.id}">${project.status}</td>
                         <c:if test="${project.engineer == null}">
                             <td>-</td>
                         </c:if>
@@ -41,7 +41,7 @@
                         </c:if>
                         <td>
                             <div class="buttons"><a href="/project/edit/${project.id}"
-                                                    class="button is-warning">Edytuj</a>
+                                                    class="button is-warning edit" id="button${project.id}">Edytuj</a>
                                 <a href="/project/details/${project.id}"
                                    class="button is-info">Szczegóły</a>
                                 <a href="" class="popup button is-danger" data-windowId="#window${project.id}">Usuń</a>
@@ -78,5 +78,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@include file="/WEB-INF/views/footer/footer.jsp" %>
 <script src="/js/confirm.js"></script>
+<script src="/js/editButton.js"></script>
 </body>
 </html>
